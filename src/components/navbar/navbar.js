@@ -18,14 +18,18 @@ const Navbar = () => {
   const handleLogin = () => {
     // logout and redirect to auth
     AuthService.logout();
+    console.log("toto")
     window.location.href = "/auth/login";
+    console.log("tata2")
     //navigate("/auth/login");
   };
   const handleSignout = () => {
     // logout and redirect to auth
     hideDropdown();
     AuthService.logout();
+    console.log("toto2")
     window.location.href = "/auth/login";
+    console.log("tatat2")
   };
 
   useEffect(() => {
