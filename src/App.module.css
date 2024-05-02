@@ -1,0 +1,85 @@
+* {
+    text-align: center;
+    
+    transition-duration: 0.2s;
+}
+
+.pageNotFound {
+    padding-top: 100px;
+    font-size: 50px;
+    font-weight: 700;
+}
+
+:root { /* light theme */
+    --background-color: #e0e0e0;
+    --overlay-1: rgba(0, 0, 0, 0.0);
+    --overlay-2: rgba(0, 0, 0, 0.05);
+    --overlay-3: rgba(0, 0, 0, 0.07);
+    --overlay-4: rgba(0, 0, 0, 0.08);
+    --overlay-5: rgba(0, 0, 0, 0.09);
+    --overlay-6: rgba(0, 0, 0, 0.11);
+    --overlay-7: rgba(0, 0, 0, 0.12);
+    --overlay-8: rgba(0, 0, 0, 0.14);
+    --overlay-9: rgba(0, 0, 0, 0.15);
+    --overlay-9-1: rgba(0, 0, 0, 0.16);
+    --overlay-10: rgba(0, 0, 0, 0.3);
+    --overlay-11: rgba(0, 0, 0, 0.5);
+    --overlay-12: rgba(0, 0, 0, 0.7);
+    
+    --font-color-1: #222222;
+    --font-color-2: #ffffff;
+
+    /* global colors */
+
+    --primary-color: #3b70ff;
+    --primary-color-hover: #2f5ace;
+    --primary-text-color: #222222;
+    
+    --secondary-color: #ff3b3b;
+    --secondary-color-hover: #e62e2e;
+    --secondary-text-color: #ffffff;
+
+    --tertiary-color: #5565F2;
+    --tertiary-color-hover: #3a46b1;
+    --tertiary-text-color: #000000;
+
+
+    --cancel-color: #ff3b3b;
+    --cancel-color-hover: #e62e2e;
+    --cancel-text-color: #ffffff;
+
+    --disbled-color: #c4c4c4;
+    --disbled-color-hover: #c4c4c4;
+    --disabled-text-color: #ffffff;
+
+    --white-color: #ffffff;
+    --black-color: #121212;
+
+    /* global parameters */
+    --navbar-height:  5.5rem;
+    
+}
+ 
+[data-theme="dark"] { /* dark theme */
+    --background-color: #121212;
+    --overlay-1: rgba(255, 255, 255, 0.0);
+    --overlay-2: rgba(255, 255, 255, 0.05);
+    --overlay-3: rgba(255, 255, 255, 0.07);
+    --overlay-4: rgba(255, 255, 255, 0.08);
+    --overlay-5: rgba(255, 255, 255, 0.09);
+    --overlay-6: rgba(255, 255, 255, 0.11);
+    --overlay-7: rgba(255, 255, 255, 0.12);
+    --overlay-8: rgba(255, 255, 255, 0.14);
+    --overlay-9: rgba(255, 255, 255, 0.15);
+    --overlay-9-1: rgba(255, 255, 255, 0.16);
+    --overlay-10: rgba(255, 255, 255, 0.3);
+    --overlay-11: rgba(255, 255, 255, 0.5);
+    --overlay-12: rgba(255, 255, 255, 0.7);
+    
+
+    --font-color-1: #ffffff;
+    --font-color-2: #222222;
+
+
+
+}

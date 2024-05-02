@@ -1,0 +1,88 @@
+
+.buttons_container{
+    margin-top: 9rem;
+    margin-bottom: 4.7rem;
+}
+.account_type_button_container {
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 2.5rem;
+}
+
+.account_type_button {
+
+    width: 100%;
+    height: 3.5rem;
+    line-height: 3.5rem;
+    border-radius: 0.6rem;
+    
+    margin-top: 0.5rem;
+
+
+    color: white;
+    font-weight:500;
+    font-size: 1.2rem;
+    letter-spacing: 0.1rem;
+    border: none;
+    transition: ease-in-out 0.2s;
+    
+}
+
+.account_type_button:hover {
+    background-color: #131313;
+    cursor: pointer;
+    transition: ease-in-out 0.2s;
+}
+
+.personal {
+    background-color: #90B4EB;
+}
+.personal:hover {
+    background-color: #3C6DD5;
+}
+
+.business {
+    background-color: #75CA73;
+}
+.business:hover {
+    background-color: #479246;
+}
+
+.sub_title {
+    font-size: 1.7rem;
+    font-weight: 700;
+
+    
+    margin-bottom: 1rem;
+}
+
+
+
+.select {
+    width: 100%;
+    height: 3.7rem;
+    line-height: 3.7rem;
+    border-radius: 0.6rem;
+    border: none;
+    background-color:#F0F0F0 ;
+    margin-top: 0.5rem;
+
+    margin-bottom: 5.4rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    color: black;
+    
+
+
+}
+
+.select:invalid {
+    text-align: center;
+    color: #B6B6B6;
+}
+.option {
+    color: black;
+}

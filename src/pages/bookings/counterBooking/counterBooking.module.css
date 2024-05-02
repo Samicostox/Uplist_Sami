@@ -1,0 +1,109 @@
+.counter_booking {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: auto;
+    animation: fadeIn 0.5s;
+
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0.3;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.counter_booking_container{
+    position: absolute;
+    top: 10%;
+    right: 23%;
+    left: 23%;
+    min-height: 400px;
+    background-color: white;
+    border-radius: 10px;
+    z-index: 4;
+    animation: slideIn 0.5s;
+    padding: 20px;
+    overflow: hidden;
+    
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(+50%);
+    }
+    to {
+        transform: translateY(0%);
+    }
+}
+
+.counter_booking_title{
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+.current_enquiry_information {
+    /* display: flex; */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+
+}
+.counter_enquiry_form_input_label{
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    text-align: left;
+}
+.current_enquiry_information_field{
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+    text-align: left;
+}
+.buttons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+}
+.counter_enquiry_form_buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+}
+.button {
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    border: none;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    outline: none;
+}
+.button.send{
+    background-color: var(--primary-color);
+    color: white;
+}
+.button.send:hover{
+    background-color: var(--primary-color-hover)
+}
+
+.button.cancel{
+    background-color: var(--secondary-color);
+    color: white;
+}

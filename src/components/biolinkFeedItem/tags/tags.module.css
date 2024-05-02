@@ -1,0 +1,23 @@
+.tags{
+    position: absolute;
+    top: 10px;
+    right: 10px;;
+    /* background-color: blue; */
+    display: inline-flex;
+    
+
+}
+.tag{
+    height: 1.3rem;
+    line-height: 1.3rem;
+    margin-left: 1rem;
+
+    border-radius: 1.5rem;
+    padding-left: 0.6rem;
+    padding-right: 0.6rem;
+    padding-top: 0rem;
+    padding-bottom: 0.1rem;
+
+    font-weight: 500;
+    text-transform: uppercase;
+}

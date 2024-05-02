@@ -1,0 +1,214 @@
+.account {
+    background-color: rgb(240, 240, 240);
+    min-height: 100vh;
+}
+.account label {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    text-align: left;
+    line-height: 2.5rem;
+}
+
+.account_container {
+    width: 700px;
+    margin: 0 auto;    min-height: 90vh;
+    padding-bottom: 50px;
+}
+.account_header {
+    padding-top: 50px;
+    font-size: 32px;
+}
+.account_body{
+    text-align: left;
+}
+.form_header {
+    margin-top: 50px;
+    text-align: left;
+    font-size: 20px;
+    margin-bottom: 1rem;
+}
+
+.details_container {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
+.section_container{
+    background-color: rgb(255, 255, 255);
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
+
+.form_row{
+    margin-bottom: 0.3rem;
+    text-align: left;
+}
+.details_label label{
+    font-size: 16px;
+    font-weight: 500;
+    color: rgb(77, 77, 77);
+
+}
+.details_input{
+    width: 100%;
+    height: 40px;
+    border-radius:0px ;
+    border: none;
+    border-bottom: 1px solid rgb(77, 77, 77);
+
+    padding-left: 0.2rem;
+
+    font-size: 16px;
+    font-weight: 500;
+    color: rgb(77, 77, 77);
+}
+.details_input:focus {
+    outline: none;
+    border:none;
+    border-bottom: 1px solid rgb(0, 60, 255);
+}
+.select_row {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    margin-bottom: 1rem;
+}
+.multi_labels {
+    font-size: 16px;
+    font-weight: 500;
+    text-align: left;
+    display: grid;
+    column-gap: 0;
+    row-gap: 0.5rem;
+    
+    grid-template-columns: 1fr ;
+}
+.multi_labels label {
+    line-height: 16px;
+}
+.multi_info  {
+    color:rgb(77, 77, 77);
+    font-size: 16px !important;
+}
+.switch {
+    justify-self: end;
+    align-self: center;
+}
+.select {
+    height: 70%;
+    align-self: center ;
+    border-radius: 0.2rem;
+}
+.select:invalid {
+    text-align: center;
+    color: #B6B6B6;
+}
+.aproval {
+    align-self: center;
+    justify-self: center;
+}
+.status {
+    text-align: right;
+    font-weight: 500;
+}
+.status.approved {
+    color: rgb(13, 124, 13);
+}
+.status.pending {
+    color: orange;
+}
+.status.rejected {
+    color: red;
+}
+
+
+.change_password_button {
+    align-self: center;
+    height: 80%;
+    border: none;
+    border-radius: 0.2rem;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    cursor: pointer;
+}
+.change_password_button:hover {
+    background-color: var(--primary-color-hover);
+}
+
+.delete_account_button {
+    align-self: center;
+    height: 80%;
+    border: none;
+    border-radius: 0.2rem;
+    background-color: var(--secondary-color);
+    color: var(--white-color);
+    cursor: pointer;
+}
+.delete_account_button:hover {
+    background-color: var(--secondary-color-hover);
+}
+
+.terms_container {
+    margin-top: 2rem;
+    text-align: left;
+    font-size: 14px;
+    color: rgb(77, 77, 77);
+}
+.privacy_policy_link{
+    text-decoration: underline;
+    color: rgb(77, 77, 77);
+
+}
+.privacy_policy_link:hover{
+    color: rgb(89, 62, 138);
+}
+
+.terms_of_service_link{
+    text-decoration: underline;
+    color: rgb(77, 77, 77);
+
+}
+.terms_of_service_link:hover{
+    color: rgb(89, 62, 138);
+}
+
+
+@media only screen and (max-width: 800px) {
+    .account label {
+        font-size: 1rem;
+        line-height: 2rem;
+    }
+    .account_container {
+        width: 80%;
+    }
+    .account_header {
+        font-size: 28px;
+    }
+    .details_container {
+        padding: 0.7rem;
+    }
+    .section_container {
+        padding: 0.7rem;
+    }
+    .form_header {
+        font-size: 18px;
+    }
+    .details_label label {
+        font-size: 14px;
+    }
+    .details_input {
+        font-size: 14px;
+    }
+    .multi_labels {
+        font-size: 14px;
+    }
+    .multi_info {
+        font-size: 14px;
+    }
+    .change_password_button {
+        font-size: 14px;
+    }
+    .delete_account_button {
+        font-size: 14px;
+    }
+}

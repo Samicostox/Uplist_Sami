@@ -1,0 +1,82 @@
+.edit_container{
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: auto;
+    animation: fadeIn 0.5s;
+
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0.3;
+    }
+    to {
+        opacity: 1;
+    }
+}
+    
+
+.edit{
+    position: absolute;
+    top: 15%;
+    right: 23%;
+    left: 23%;
+    min-height: 400px;
+    background-color: white;
+    border-radius: 10px;
+    z-index: 4;
+    animation: slideIn 0.5s;
+    padding: 20px;
+    overflow: hidden;
+    
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(+50%);
+    }
+    to {
+        transform: translateY(0%);
+    }
+}
+
+
+
+@media only screen and (max-width: 1150px) {
+    .edit{
+        top: 15%;
+        right: 20%;
+        left: 20%;
+    }
+} 
+
+@media only screen and (max-width: 900px) {
+    .edit{
+        top: 15%;
+        right: 10%;
+        left: 10%;
+    }
+} 
+
+
+@media only screen and (max-width: 700px) {
+    .edit{
+        top: 15%;
+        right: 5%;
+        left: 5%;
+    }
+} 
+@media only screen and (max-width: 400px) {
+    .edit {
+        padding: 15px;
+    }
+}

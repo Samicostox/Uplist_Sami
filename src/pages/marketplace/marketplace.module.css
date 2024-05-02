@@ -1,0 +1,38 @@
+.marketplace{
+    width: 600px;
+    /* background-color: red; */
+    margin: 0 auto;
+    padding-top: 50px;
+    padding-bottom: 150px;
+    min-height: 100vh;
+
+}
+.marketplaceSearch_select{
+    padding-top: 1rem;
+    /* display: flex; */
+    align-items: center;
+    justify-Content: 'space-between';
+    width: 100%;
+
+}
+.marketplaceSearch_select input{
+ text-align: left;
+}
+.marketplaceFeed_container{
+    animation: fadeIn 0.3s;
+}
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .marketplace{
+        width: 85%;
+
+    }
+}

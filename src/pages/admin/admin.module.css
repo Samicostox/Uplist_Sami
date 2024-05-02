@@ -1,0 +1,164 @@
+
+
+.admin {
+    background-color: #DDDDDD;
+}
+.admin_content {
+    width: 800px;
+    margin: 0 auto;
+    padding-top: 50px;
+    padding-bottom: 150px;
+}
+
+.divider_title {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #000;
+    text-transform: uppercase;
+    text-align: center;
+    position: relative;
+}
+.divider_line{
+    width: 100%;
+    height: 1px;
+    background: #000;
+    margin-bottom: 1.5rem;
+    
+}
+.feed_item_wrapper {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+.aproval_feed_item{
+    width: auto;
+    filter: drop-shadow(0px 0px 5px rgba(0,0,0,0.5));
+}
+
+.buttons_container {
+    height: 140px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+.aproval_button{
+    width: 100px;
+    height: 100px;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    margin: 10px;
+    cursor: pointer;
+}
+.aproval_button.approve {
+    background-color: green;
+}
+.aproval_button.approve:hover {
+    background-color: #007000;
+}
+
+.aproval_button.deny {
+    background-color: red;
+}
+.aproval_button.deny:hover {
+    background-color: #ca0c0c;
+}
+
+.aproval_button.remove {
+    background-color: #ff0000;
+}
+.aproval_button.remove:hover {
+    background-color: #ca0c0c;
+}
+
+.aproval_button.make {
+    background-color: black;
+}
+.aproval_button.make:hover {
+    background-color: #111111;
+}
+.search_results{
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+}
+
+
+/* remove user */
+.search_wrapper {
+    display: inline-flex;
+    height: 48px;
+    width: 100%;
+}
+.search_button{
+    width: 200px;
+    height: 100%;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    font-size: 14px;
+    font-weight: 00;
+    letter-spacing: 0.05rem;
+  
+    cursor: pointer;
+    outline: none;
+    box-sizing: border-box;
+}
+.search_button:hover{
+    background-color: #111111;
+}
+
+.search_bar{
+    width: 100%;
+    height: 100%;
+    margin-right: 10px;
+
+}
+.search_input{
+    width: 100%;
+    height: 100%;
+    padding: 0 10px;
+    border: none;
+    border-radius: 3px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #000;
+    outline: none;
+    font-family: 'K2D', sans-serif;
+}
+
+@media only screen and (max-width: 850px) {
+    .admin_content {
+        width: 95%;
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    .aproval_button{
+        width: 65px;
+        height: 65px;
+    }
+    .buttons_container {
+
+        padding: 0.5rem;
+    }
+    .feed_item_wrapper {
+        display:grid;
+        grid-template-columns: 5fr 1fr;
+    }
+    .buttons_container {
+        height: inherit;
+        display: block;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    .feed_item_wrapper {
+        grid-template-columns: 1fr;
+    }
+}

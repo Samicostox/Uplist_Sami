@@ -1,0 +1,94 @@
+.add_container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow: auto;
+  animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0.3;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.add {
+  position: absolute;
+  top: 10%;
+  right: 23%;
+  left: 23%;
+  min-height: 400px;
+  background-color: white;
+  border-radius: 10px;
+  z-index: 4;
+  animation: slideIn 0.5s;
+  padding: 20px;
+  padding-bottom: 30px;
+  overflow: hidden;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(+50%);
+  }
+  to {
+    transform: translateY(0%);
+  }
+}
+
+.tabs {
+  width: 700px;
+  padding-left: 6%;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+@media only screen and (max-width: 1500px) {
+  .tabs {
+    width: 100%;
+    padding-left: 3%;
+    margin: auto;
+  }
+}
+@media only screen and (max-width: 1500px) {
+  .tabs {
+    padding-left: 0%;
+  }
+}
+@media only screen and (max-width: 1150px) {
+  .add {
+    right: 20%;
+    left: 20%;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .add {
+    right: 10%;
+    left: 10%;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .add {
+    right: 5%;
+    left: 5%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .responsive_text {
+    font-size: 12px;
+  }
+}
