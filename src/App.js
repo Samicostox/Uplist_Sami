@@ -24,6 +24,8 @@ import CookiesBanner from "./components/cookies/cookies";
 import ResetPassword from "./pages/auth/ResetPassword/resetPassword";
 import Example from "./pages/sami-hugo/landing";
 import Auth2 from "./pages/auth/auth2";
+import GrayRectangle from "./components/biolinkFeedItem/biolinkFeedItem2";
+
 
 function App() {
   const toasterBannerRef = React.useRef(null);
@@ -105,6 +107,16 @@ function App() {
                     />
                   }
                 />
+                <Route
+                  path="/gray"
+                  element={
+                    <GrayRectangle
+                      errorCallback={recievedErrorCallback}
+                      successCallback={recievedSuccessCallback}
+                    />
+                  }
+                />
+
 
                 <Route
                   path="/auth/forgot-password"
@@ -173,6 +185,7 @@ function App() {
                     />
                   }
                 />
+                
                 <Route
                   path="/account"
                   element={
