@@ -36,6 +36,7 @@ export default function Auth2(props) {
     const [formInput, setformInput] = useState(initialValues);
   const [buttonLock, setButtonLock] = useState(false);
   const [showForgotPasswordLink, setShowForgotPasswordLink] = useState(false);
+  const test = "test"
 
 
 
