@@ -5,9 +5,9 @@ import BiolinkFeedItem2 from "../../../components/biolinkFeedItem/biolinkFeedIte
 
 const MarkeplaceFeed = (props) => {
   return (
-    <div className={style.marketplaceFeed}>
+    <div >
       {props.linkpages.length === 0 ? (
-        <div className={style.no_linkpages}>No biolinks found</div>
+        <div >No biolinks found</div>
       ) : (
         <>
           {props.linkpages.map((linkpage, index) => {
