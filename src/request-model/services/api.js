@@ -1,8 +1,12 @@
 import axios from "axios";
 import TokenService from './token.service';
 
-const instance = axios.create({
+const instance2 = axios.create({
     baseURL: `${process.env.REACT_APP_BACKEND_URL}/api`,
+});
+
+const instance = axios.create({
+    baseURL: "https://uplistbackend-9b27d297fad4.herokuapp.com/api",
 });
 
 instance.interceptors.request.use(
