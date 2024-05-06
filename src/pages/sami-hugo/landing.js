@@ -9,6 +9,7 @@ import Example2 from "./example";
 import AOS from "aos";
 import "aos/dist/aos.css"; // This imports the default AOS styles
 import Vide from "./vide";
+import Navbar from "../../components/navbar/navbar";
 
 function Example() {
   require("./tailwind.css");
