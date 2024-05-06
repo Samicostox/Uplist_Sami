@@ -52,7 +52,7 @@ const BiolinkFeedItem2 = (props) => {
         
       }
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100 p-5">
+    
       <div className="flex max-w-6xl p-3 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 relative">
         {/* Badge */}
         <span className="absolute top-0 right-0 mt-7 mr-2">
@@ -78,7 +78,7 @@ const BiolinkFeedItem2 = (props) => {
           </p>
         </div>
       </div>
-    </div>
+  
   );
 }
 
