@@ -1,3 +1,8 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body.preload *{
   animation-duration: 0s !important;
   -webkit-animation-duration: 0s !important;

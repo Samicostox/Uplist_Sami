@@ -23,6 +23,7 @@ import TermsAndConditions from "./pages/terms/termsAndConditions";
 import CookiesBanner from "./components/cookies/cookies";
 import ResetPassword from "./pages/auth/ResetPassword/resetPassword";
 import Example from "./pages/sami-hugo/landing";
+import Auth2 from "./pages/auth/auth2";
 
 function App() {
   const toasterBannerRef = React.useRef(null);
@@ -90,6 +91,15 @@ function App() {
                   path="/auth/login"
                   element={
                     <Auth
+                      errorCallback={recievedErrorCallback}
+                      successCallback={recievedSuccessCallback}
+                    />
+                  }
+                />
+                <Route
+                  path="/auth/login2"
+                  element={
+                    <Auth2
                       errorCallback={recievedErrorCallback}
                       successCallback={recievedSuccessCallback}
                     />
