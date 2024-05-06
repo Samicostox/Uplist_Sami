@@ -29,11 +29,9 @@ const Navbar = () => {
   };
   const handleSignout = () => {
     // logout and redirect to auth
-    hideDropdown();
+
     AuthService.logout();
-    console.log("toto2");
     window.location.href = "/auth/login";
-    console.log("tatat2");
   };
 
   useEffect(() => {
@@ -50,6 +48,7 @@ const Navbar = () => {
         <NavLink href={"/artists"}>Find Artists</NavLink>
         {token && <NavLink href={"/bookings"}>Bookings</NavLink>}
         {token && <NavLink href={"/account"}>Account</NavLink>}
+        {token && <button onClick={handleSignout}>Sign Out</button>}
         {!token && <RegisterButton />}
         {token ? <YourBiolinkButton /> : <SignInButton />}
       </div>
