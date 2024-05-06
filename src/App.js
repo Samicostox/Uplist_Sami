@@ -111,8 +111,7 @@ function App() {
                   path="/gray"
                   element={
                     <GrayRectangle
-                      errorCallback={recievedErrorCallback}
-                      successCallback={recievedSuccessCallback}
+                    
                     />
                   }
                 />

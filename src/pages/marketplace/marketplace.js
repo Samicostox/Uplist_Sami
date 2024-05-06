@@ -56,10 +56,10 @@ const Markeplace = (props) => {
   };
 
   return (
-    <div className={style.marketplace}>
-      <div className={style.marketplaceSearch_container}>
+    <div >
+      <div >
         <MarkeplaceSearch onSearch={props.handleSearch} />
-        <div className={style.marketplaceSearch_select}>
+        <div >
           <Select
             className="basic-multi-select"
             classNamePrefix="select"
@@ -75,7 +75,7 @@ const Markeplace = (props) => {
       </div>
 
       {!props.loading && (
-        <div className={style.marketplaceFeed_container}>
+        <div >
           <MarkeplaceFeed linkpages={props.state.filteredLinkpages} />
         </div>
       )}
