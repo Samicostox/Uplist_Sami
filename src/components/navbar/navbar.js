@@ -44,15 +44,14 @@ const Navbar = () => {
     };
   }, [navigate]);
   return (
-    <nav className="z-50 fixed left-[50%] top-8 flex w-fit -translate-x-[50%] items-center gap-6 rounded-lg border-[1px] border-neutral-700 bg-neutral-900 p-2 text-sm text-neutral-500">
+    <nav className="z-50 fixed left-[50%] top-8 flex w-2/4 -translate-x-[50%] items-center gap-6 rounded-lg border-[1px] border-neutral-700 bg-neutral-900 p-2 text-sm text-neutral-500">
       <Logo />
-
-      <NavLink href={"/artists"}>Find Artists</NavLink>
-      {token && <NavLink href={"/bookings"}>Bookings</NavLink>}
-      {token && <NavLink href={"/account"}>Account</NavLink>}
-
-      {token && <YourBiolinkButton />}
-      {!token && <SignInButton />}
+      <div className="ml-auto flex items-center gap-6">
+        <NavLink href={"/artists"}>Find Artists</NavLink>
+        {token && <NavLink href={"/bookings"}>Bookings</NavLink>}
+        {token && <NavLink href={"/account"}>Account</NavLink>}
+        {token ? <YourBiolinkButton /> : <SignInButton />}
+      </div>
     </nav>
   );
 };
