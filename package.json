@@ -47,7 +47,7 @@
   },
   "scripts": {
     "start": "react-app-rewired start",
-    "build": "CI= REACT_APP_BACKEND_URL=https://uplist-prod-backend.azurewebsites.net react-app-rewired build",
+    "build": "CI= react-app-rewired build",
     "deploy": "REACT_APP_LANDING_PAGE_ONLY=false npm run build && swa deploy",
     "test": "npx jest --no-cache --config jest.config.js --env=jsdom",
     "eject": "react-scripts eject"
