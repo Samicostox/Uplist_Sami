@@ -52,8 +52,9 @@ const BiolinkFeedItem2 = (props) => {
         
       }
   return (
+    <NavLink to={`/biolink/${state.username}`}>
     
-      <div className="flex max-w-6xl mx-auto p-3 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 relative mt-3">
+      <div className="flex max-w-6xl mx-auto p-3 bg-white border border-gray-200 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700 relative mt-3">
         {/* Badge */}
         <span className="absolute top-0 right-0 mt-7 mr-2">
           <span className="inline-flex items-center gap-x-1.5 rounded-md bg-indigo-100 px-2 py-1 text-sm md:text-md font-medium text-indigo-700">
@@ -78,6 +79,7 @@ const BiolinkFeedItem2 = (props) => {
           </p>
         </div>
       </div>
+      </NavLink>
   
   );
 }
