@@ -50,6 +50,7 @@ const Navbar = () => {
         <NavLink href={"/artists"}>Find Artists</NavLink>
         {token && <NavLink href={"/bookings"}>Bookings</NavLink>}
         {token && <NavLink href={"/account"}>Account</NavLink>}
+        {!token && <RegisterButton />}
         {token ? <YourBiolinkButton /> : <SignInButton />}
       </div>
     </nav>
@@ -59,11 +60,13 @@ export default Navbar;
 const Logo = () => {
   // Temp logo from https://logoipsum.com/
   return (
-    <img
-      class="object-cover h-6 w-6 invert"
-      src="/logo/logo_no_bg.png"
-      alt="logo"
-    ></img>
+    <a href="/">
+      <img
+        class="object-cover h-6 w-6 invert"
+        src="/logo/logo_no_bg.png"
+        alt="logo"
+      />
+    </a>
   );
 };
 
@@ -151,7 +154,7 @@ const SignInButton = () => {
       onClick={handleBiolinkClick}
       className={`
           relative z-0 flex items-center gap-2 overflow-hidden whitespace-nowrap rounded-lg border-[1px] 
-          border-neutral-700 px-4 py-1.5 font-medium
+          border-blue-500 px-4 py-1.5 font-medium
          text-neutral-300 transition-all duration-300
           
           before:absolute before:inset-0
@@ -166,6 +169,35 @@ const SignInButton = () => {
           active:scale-100`}
     >
       Sign In
+    </button>
+  );
+};
+
+const RegisterButton = () => {
+  const [token, setToken] = React.useState(TokenService.getUser());
+
+  const getBiolinkNavigation = () => {
+    const newToken = TokenService.getUser();
+    if (!newToken) {
+      setToken(undefined);
+      return "/auth/login";
+    }
+
+    const username = newToken.username;
+
+    return "/biolink/" + username;
+  };
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    window.location.href = "/auth/sign-up";
+  };
+  return (
+    <button
+      onClick={handleClick}
+      className="px-4 py-1.5  rounded-md bg-blue-500 text-white transition duration-200 hover:bg-neutral-900 hover:text-white border-2 border-transparent hover:border-blue-500"
+    >
+      Register
     </button>
   );
 };
