@@ -75,7 +75,7 @@ const Markeplace = (props) => {
       </div>
 
       {!props.loading && (
-        <div className={style.marketplaceFeed_container}>
+        <div >
           <MarkeplaceFeed linkpages={props.state.filteredLinkpages} />
         </div>
       )}
