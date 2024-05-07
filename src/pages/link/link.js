@@ -126,7 +126,7 @@ function Profile(props) {
           <div class="relative  mx-auto">
             <img
               class=" w-full object-cover rounded-md"
-              src="/pictures/link/events.jpeg"
+              src="/pictures/link/event.jpeg"
               alt="Random image"
             ></img>
             <div class="absolute inset-0 bg-gray-700 opacity-70 rounded-md"></div>
