@@ -1,6 +1,6 @@
 import React from "react";
 import style from "./marketplaceFeed.module.css";
-import BiolinkFeedItem from "../../../components/biolinkFeedItem/biolinkFeedItem";
+
 import BiolinkFeedItem2 from "../../../components/biolinkFeedItem/biolinkFeedItem2";
 
 const MarkeplaceFeed = (props) => {
