@@ -1,6 +1,7 @@
 module.exports = {
   content: [
-    "./src/**/*.{js,jsx,ts,tsx}", // Adjust according to your project file structure
+    "./src/**/*.{js,jsx,ts,tsx}",
+    "./node_modules/flowbite/**/*.js" // Adjust according to your project file structure
   ],
   theme: {
     extend: {
@@ -11,5 +12,8 @@ module.exports = {
       },
     },
   },
-  plugins: [require("@tailwindcss/typography")],
+  plugins: [
+    require("@tailwindcss/typography"),
+    require('flowbite/plugin')
+  ],
 };

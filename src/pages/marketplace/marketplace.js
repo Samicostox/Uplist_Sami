@@ -4,6 +4,7 @@ import MarkeplaceSearch from "../../components/marketplaceSearch/marketplaceSear
 import MarkeplaceFeed from "./marketplaceFeed/marketplaceFeed";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
+import SearchBar from "../../components/SearchBar/Searchbar";
 
 const Markeplace = (props) => {
   const tagOptions = [
@@ -73,6 +74,8 @@ const Markeplace = (props) => {
           />
         </div>
       </div>
+
+      <SearchBar onSearch={props.handleSearch}></SearchBar>
 
       {!props.loading && (
         <div >
