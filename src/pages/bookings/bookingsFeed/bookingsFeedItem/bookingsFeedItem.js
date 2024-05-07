@@ -7,7 +7,9 @@ import Rating from "../../../../components/biolinkFeedItem/rating/rating";
 
 const BookingsFeedItem = (props) => {
 
-  console.log(props.booking?.enquiry?.notes)
+  console.log('before')
+  console.log(props.booking?.artistState?.pageImage)
+  console.log(props.booking?.artistState?.description)
   const renderProfileImage = (pageImage) => {
     if (pageImage) {
       return (

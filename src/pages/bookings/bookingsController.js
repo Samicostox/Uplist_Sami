@@ -77,7 +77,7 @@ const BookingsController = (props) => {
                         
                         if (resp.status === 200){
                             let artistData = {
-                                pageImage: resp.data.pageImage,
+                                pageImage: resp.data.profilePicture,
                                 description: resp.data.description,
                                 user: resp.data.user,
                                 average_rating: resp.data.average_rating,
