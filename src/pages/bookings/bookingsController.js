@@ -33,6 +33,8 @@ const BookingsController = (props) => {
             const resp = await BookingService.getAllBookings()
             if (resp.status === 200){
 
+                console.log(resp)
+
                 // drop the draft bookings
                 let bookings = resp.data?.filter(booking => booking.status !== "draft")
 

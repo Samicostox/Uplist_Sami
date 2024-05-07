@@ -1,8 +1,5 @@
 import React from "react";
-import style from "./marketplace.module.css";
-
 import MarkeplaceFeed from "./marketplaceFeed/marketplaceFeed";
-import Select from "react-select";
 import makeAnimated from "react-select/animated";
 import SearchBar from "../../components/SearchBar/Searchbar";
 

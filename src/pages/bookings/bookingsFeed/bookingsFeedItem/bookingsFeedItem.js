@@ -6,6 +6,8 @@ import { NavLink } from "react-router-dom";
 import Rating from "../../../../components/biolinkFeedItem/rating/rating";
 
 const BookingsFeedItem = (props) => {
+
+  console.log(props.booking?.enquiry?.notes)
   const renderProfileImage = (pageImage) => {
     if (pageImage) {
       return (
@@ -379,8 +381,8 @@ const BookingsFeedItem = (props) => {
 
             <div className={style.notes}>
               <b> User notes: </b>{" "}
-              {props.booking?.enquiry?.note
-                ? props.booking?.enquiry?.note
+              {props.booking?.enquiry?.notes
+                ? props.booking?.enquiry?.notes
                 : "n/a"}
             </div>
 
