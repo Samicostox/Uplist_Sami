@@ -123,17 +123,15 @@ function Profile(props) {
           rel="noreferrer"
           className="w-full bg-black no-underline rounded-md shadow-lg  flex flex-col justify-center items-center text-center text-2xl text-[var(--white-color)] font-medium transition duration-200 ease-in-out hover:cursor-pointer"
         >
-          <div class="relative  mx-auto">
+          <div class="relative max-h-40 mx-auto">
             <img
-              class=" w-full object-cover rounded-md"
+              class=" w-[490px] max-h-40 object-cover rounded-md"
               src="/pictures/link/event.jpeg"
-              alt="Random image"
+              alt="Booking an event"
             ></img>
             <div class="absolute inset-0 bg-gray-700 opacity-70 rounded-md"></div>
             <div class="absolute inset-0 flex items-center justify-center">
-              <h2 class="text-white text-3xl font-mediumbold">
-                View our events
-              </h2>
+              <h2 class="text-white text-3xl font-medium">View our Events</h2>
             </div>
           </div>
         </a>
@@ -152,12 +150,17 @@ function Profile(props) {
       props.state.is_active
     ) {
       return (
-        <NavLink to={`/book/${props.state.username}`} className={style.link}>
-          <div
-            className="w-[490px] rounded-md shadow-lg bg-[var(--overlay-2)] bg-cover bg-center flex justify-center items-center text-center text-2xl text-[var(--white-color)] font-mediumbold transition duration-200 ease-in-out"
-            data-testid="booking-item"
-          >
-            Make a Booking
+        <NavLink to={`/book/${props.state.username}`}>
+          <div class="relative max-h-40 mx-auto">
+            <img
+              class=" w-[490px] max-h-40 object-cover rounded-md"
+              src="/pictures/link/booking.jpeg"
+              alt="Booking an event"
+            ></img>
+            <div class="absolute inset-0 bg-gray-700 opacity-70 rounded-md"></div>
+            <div class="absolute inset-0 flex items-center justify-center">
+              <h2 class="text-white text-3xl font-medium">Make a Booking</h2>
+            </div>
           </div>
         </NavLink>
       );
@@ -390,23 +393,23 @@ function Profile(props) {
       return <></>;
     }
     return (
-      <div className="w-[490px] rounded-lg shadow-lg bg-[var(--overlay-2)] bg-cover bg-center flex justify-center items-center text-center text-9xl text-[var(--white-color)] font-[K2D] transition duration-200 ease-in-out">
-        <div className={style.mailing_list_block_header}>
+      <div className="w-[490px] rounded-lg shadow-lg bg-[var(--overlay-2)] bg-cover bg-center justify-center items-center text-left text-[var(--white-color)] transition duration-200 ease-in-out">
+        <div className="text-left pt-5 pl-5 text-2xl font-medium text-[var(--font-color-1)]">
           Subscribe to their mailing list!
         </div>
-        <div className={style.mailing_list_block_content}>
-          <div className={style.mailing_list_item}>
+        <div className="">
+          <div className="flex justify-center w-full">
             {!subscribed ? (
               <>
                 <input
-                  className={style.mailing_list_input}
+                  className="w-[70%] h-15 rounded-sm border-2 pl-4 text-lg leading-[60px]  font-medium text-black transition duration-200 ease-in-out"
                   type="email"
                   placeholder="Email Address"
                   value={mailingListInput}
                   onChange={handleMailListEmailChange}
                 />
                 <button
-                  className={style.mailing_list_button}
+                  className="px-6 h-10 py-2 bg-blue-500 text-white rounded-r-lg font-bold transform hover:-translate-y-1 transition duration-400"
                   onClick={onSubscribe}
                 >
                   Subscribe
