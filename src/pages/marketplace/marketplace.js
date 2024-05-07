@@ -75,7 +75,7 @@ const Markeplace = (props) => {
         </div>
       </div>
 
-      <SearchBar onSearch={props.handleSearch}></SearchBar>
+      <SearchBar onSearch={props.handleSearch} onChange={props.handleMultiSelectChange}></SearchBar>
 
       {!props.loading && (
         <div >

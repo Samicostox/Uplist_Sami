@@ -13,6 +13,8 @@ const MarketplaceController = (props) => {
     })
     
     const handleMultiSelectChange = async (selectedOptions) => {
+        console.log("toto")
+        console.log(selectedOptions)
 
         let newOptions = []
         for (let i = 0; i < selectedOptions.length; i++) {
