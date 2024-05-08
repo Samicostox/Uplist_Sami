@@ -44,30 +44,45 @@ function Profile(props) {
 
   const profileDataBox = (heading, subheading, socialMediaIconLinks) => {
     return (
-      <div className={style.profileDataBox}>
-        <div className={style.profileDataBoxHeading}>
+      <div className="w-full shadow-md h-80 max-w-2xl bg-[var(--overlay-3)]  border-[var(--overlay-3)] rounded-lg p-6 box-border m-auto overflow-hidden text-ellipsis break-words flex justify-center flex-col">
+        <div className="pb-2 font-medium text-5xl text-left w-full overflow-hidden text-ellipsis flex items-center justify-between">
           {heading}
           <button
-            className={style.copyLink}
             onClick={() => {
               navigator.clipboard.writeText(window.location.href);
               props.successCallback("Copied link to clipboard!");
             }}
+            className="px-4 py-2 mr-2 rounded-md border border-black bg-white text-neutarl-700 flex justify-between items-center text-sm hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)] transition duration-200"
           >
-            <FaLink className={style.copyLinkIcon} />
-            <p>Copy link</p>
+            <FaLink className="m-0 ml-1 font-medium mr-2" />
+            <p className="">Copy link</p>
           </button>
         </div>
-
-        <div className={style.username}>@{props.state.username}</div>
-
-        <div className={style.profileDataBoxSubheading}>{subheading}</div>
-        <div className={style.profileDataBoxArtistType}>
-          {props.state.artistType}
+        <div className="flex items-center">
+          <div className="text-xl flex text-gray-400 font-mono font-medium pr-5">
+            @{props.state.username}
+          </div>
+          <span className="inline-flex max-w-20 items-center gap-x-1.5 rounded-md bg-indigo-100 px-2 py-1 text-sm md:text-md font-medium text-indigo-700">
+            <svg
+              className="h-1.5 w-1.5 fill-indigo-500"
+              viewBox="0 0 6 6"
+              aria-hidden="true"
+            >
+              <circle cx={3} cy={3} r={3} />
+            </svg>
+            {props.state.artistType}
+          </span>
         </div>
+
+        <div className="w-full max-h-20 mt-5 pb-2 pr-14 font-medium text-gray-800 text-xl text-left  text-ellipsis">
+          {subheading}
+        </div>
+
         <div className={style.profileDataBoxSocialMediaLinks}>
           <a href={`mailto:${props.state.email}`}>
-            <div className={style.contact_me_button}>Contact Me</div>
+            <button className="px-6 py-2 bg-blue-500 text-white rounded-lg font-bold transform hover:-translate-y-1 transition duration-400">
+              Contact Me
+            </button>
           </a>
           {renderSocialMediaLinks()}
         </div>
@@ -77,17 +92,23 @@ function Profile(props) {
 
   const profileImageBlock = (headerImage) => {
     if (!headerImage) {
-      return <div className={style.header_image}></div>;
+      return (
+        <div className="max-h-24 rounded-lg shadow-md m-auto bg-[var(--overlay-2)]"></div>
+      );
     } else if (headerImage) {
       return (
-        <img src={headerImage} alt="profile" className={style.heading_image} />
+        <img
+          src={headerImage}
+          alt="profile"
+          className="h-80 rounded-lg shadow-md m-auto bg-[var(--overlay-2)]"
+        />
       );
     } else {
       return (
         <img
           src="/pictures/temp/profile.png"
           alt="profile"
-          className={style.heading_image}
+          className="h-80 rounded-lg shadow-md m-auto bg-[var(--overlay-2)]"
         />
       );
     }
@@ -100,9 +121,19 @@ function Profile(props) {
           href={props.skiddleLinks[0].url}
           target="_blank"
           rel="noreferrer"
-          className={style.events_block}
+          className="w-full bg-black no-underline rounded-md shadow-lg  flex flex-col justify-center items-center text-center text-2xl text-[var(--white-color)] font-medium transition duration-200 ease-in-out hover:cursor-pointer"
         >
-          Events
+          <div class="relative max-h-40 mx-auto">
+            <img
+              class=" w-[490px] max-h-40 object-cover rounded-md"
+              src="/pictures/link/event.jpeg"
+              alt="Booking an event"
+            ></img>
+            <div class="absolute inset-0 bg-gray-700 opacity-70 rounded-md"></div>
+            <div class="absolute inset-0 flex items-center justify-center">
+              <h2 class="text-white text-3xl font-medium">View our Events</h2>
+            </div>
+          </div>
         </a>
       );
     }
@@ -119,9 +150,17 @@ function Profile(props) {
       props.state.is_active
     ) {
       return (
-        <NavLink to={`/book/${props.state.username}`} className={style.link}>
-          <div className={style.bookings_block} data-testid="booking-item">
-            Bookings
+        <NavLink to={`/book/${props.state.username}`}>
+          <div class="relative max-h-40 mx-auto">
+            <img
+              class=" w-[490px] max-h-40 object-cover rounded-md"
+              src="/pictures/link/booking.jpeg"
+              alt="Booking an event"
+            ></img>
+            <div class="absolute inset-0 bg-gray-700 opacity-70 rounded-md"></div>
+            <div class="absolute inset-0 flex items-center justify-center">
+              <h2 class="text-white text-3xl font-medium">Make a Booking</h2>
+            </div>
           </div>
         </NavLink>
       );
@@ -136,7 +175,7 @@ function Profile(props) {
 
   const linksBlock = (links) => {
     // render in blocks of 4
-    const blockSize = 4;
+    const blockSize = 1;
 
     let numberOfBlocks = Math.ceil(links.length / blockSize);
 
@@ -147,14 +186,17 @@ function Profile(props) {
       let blockContent = linksInBlock.map((link) => (
         <a
           href={link.url}
-          className={style.link}
+          className="no-underline text-[var(--overlay-12)]  flex"
           target="_blank"
           rel="noreferrer"
           key={link.id}
         >
-          <div className={style.link_item} data-testid="link-item">
+          <div
+            className="h-16 w-full rounded-md pl-8 bg-[var(--overlay-5)] text-[var(--font-color-1)] text-lg leading-[6.1rem] font-semibold whitespace-nowrap overflow-hidden text-ellipsis flex items-center transition duration-200 ease-in-out"
+            data-testid="link-item"
+          >
             {renderLinkImage(link.url)}
-            <FaLink className={style.link_icon} /> {link.content}
+            <FaLink className="" /> {link.content}
           </div>
         </a>
       ));
@@ -163,15 +205,15 @@ function Profile(props) {
     }
 
     return blocks.map((block) => (
-      <div className={style.links_block}>
-        <div className={style.links_block_inner}>{block}</div>
+      <div className=" w-full bg-[var(--overlay-3)] rounded-lg border-2 border-[var(--overlay-3)] block">
+        <div className="">{block}</div>
       </div>
     ));
   };
 
   const spotifyBlock = (links) => {
     // render in blocks of 3
-    const blockSize = 3;
+    const blockSize = 1;
 
     let numberOfBlocks = Math.ceil(links.length / blockSize);
 
@@ -183,7 +225,7 @@ function Profile(props) {
         <div data-testid="spotify-link">
           {link.isArtist ? (
             <iframe
-              className={style.spotify_embed}
+              className="w-full h-[9.48rem]   rounded-lg overflow-y-hidden"
               src={`https://open.spotify.com/embed/artist/${link.embed_id}?utm_source=generator&theme=0`}
               width="100%"
               frameBorder="0"
@@ -194,7 +236,7 @@ function Profile(props) {
             ></iframe>
           ) : (
             <iframe
-              className={style.spotify_embed}
+              className="w-full h-[9.48rem]   rounded-lg overflow-y-hidden"
               src={`https://open.spotify.com/embed/track/${link.embed_id}?utm_source=generator&theme=0`}
               width="100%"
               frameBorder="0"
@@ -211,8 +253,8 @@ function Profile(props) {
     }
 
     return blocks.map((block) => (
-      <div className={style.spotify_links_block}>
-        <div className={style.spotify_links_block_inner}>{block}</div>
+      <div className="w-full rounded-lg overflow-hidden">
+        <div className=" rounded-lg shadow-md">{block}</div>
       </div>
     ));
   };
@@ -231,15 +273,12 @@ function Profile(props) {
         <div data-testId="youtube-link">
           {video.isArtist ? (
             <>
-              <div className={style.youtube_title}>{video.content}</div>
-              <div className={style.underline}></div>
-              <div className={style.embed_container}>
+              <div class="w-full">
                 <iframe
-                  className={style.youtube_embed}
+                  class="w-full aspect-video  rounded-lg"
                   src={`https://www.youtube.com/embed/${video.embed_id}`}
-                  width="100%"
                   frameBorder="0"
-                  allowfullscreen=""
+                  allowFullScreen
                   allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                   loading="lazy"
                   title="youtube"
@@ -248,15 +287,12 @@ function Profile(props) {
             </>
           ) : (
             <>
-              <div className={style.youtube_title}>{video.content}</div>
-              <div className={style.underline}></div>
-              <div className={style.embed_container}>
+              <div class="w-full">
                 <iframe
-                  className={style.youtube_embed}
+                  class="w-full aspect-video  rounded-lg"
                   src={`https://www.youtube.com/embed/${video.embed_id}`}
-                  width="100%"
                   frameBorder="0"
-                  allowfullscreen=""
+                  allowFullScreen
                   allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                   loading="lazy"
                   title="youtube"
@@ -271,13 +307,13 @@ function Profile(props) {
     }
 
     return blocks.map((block) => (
-      <div className={style.youtube_links_block}>{block}</div>
+      <div className="rounded-lg bg-[var(--overlay-3)] shadow-lg ">{block}</div>
     ));
   };
 
   const soundcloudBlock = (links) => {
     // render in blocks of 3
-    const blockSize = 3;
+    const blockSize = 1;
 
     let numberOfBlocks = Math.ceil(links.length / blockSize);
 
@@ -289,7 +325,7 @@ function Profile(props) {
         <div data-testid="soundcloud-link">
           {link.isArtist ? (
             <iframe
-              className={style.soundcloud_embed}
+              className="w-full h-[9.47rem] border-2 border-gray-200 rounded-lg  "
               loading="lazy"
               scrolling="no"
               width="100%"
@@ -300,7 +336,7 @@ function Profile(props) {
             ></iframe>
           ) : (
             <iframe
-              className={style.soundcloud_embed}
+              className="w-full h-[9.47rem] border-2 border-gray-200 rounded-lg  "
               loading="lazy"
               scrolling="no"
               width="100%"
@@ -317,7 +353,9 @@ function Profile(props) {
     }
 
     return blocks.map((block) => (
-      <div className={style.soundcloud_links_block}>{block}</div>
+      <div className="w-full  overflow-hidden rounded-lg shadow-lg">
+        {block}
+      </div>
     ));
   };
 
@@ -355,23 +393,23 @@ function Profile(props) {
       return <></>;
     }
     return (
-      <div className={style.mailing_list_block}>
-        <div className={style.mailing_list_block_header}>
+      <div className="w-[490px] rounded-lg shadow-lg bg-[var(--overlay-2)] bg-cover bg-center justify-center items-center text-left text-[var(--white-color)] transition duration-200 ease-in-out">
+        <div className="text-left pt-5 pl-5 text-2xl font-medium text-[var(--font-color-1)]">
           Subscribe to their mailing list!
         </div>
-        <div className={style.mailing_list_block_content}>
-          <div className={style.mailing_list_item}>
+        <div className="">
+          <div className="flex justify-center w-full">
             {!subscribed ? (
               <>
                 <input
-                  className={style.mailing_list_input}
+                  className="w-[70%] h-15 rounded-sm border-2 pl-4 text-lg leading-[60px]  font-medium text-black transition duration-200 ease-in-out"
                   type="email"
                   placeholder="Email Address"
                   value={mailingListInput}
                   onChange={handleMailListEmailChange}
                 />
                 <button
-                  className={style.mailing_list_button}
+                  className="px-6 h-10 py-2 bg-blue-500 text-white rounded-r-lg font-bold transform hover:-translate-y-1 transition duration-400"
                   onClick={onSubscribe}
                 >
                   Subscribe
@@ -394,27 +432,24 @@ function Profile(props) {
     ? ""
     : style.full;
   return (
-    <div className={style.profile}>
+    <div className="pt-20">
       <EditBanner canEdit={props.editable} />
       {!props.pageLoading && (
         <div className={style.profile_content}>
-          <div
-            className={
-              style.profile_container_uneven +
-              " " +
-              profile_container_uneven_full
-            }
-          >
-            {profileDataBox(
-              props.state.header,
-              props.state.subheading,
-              props.socialMediaIconLinks
-            )}
-
-            {profileImageBlock(props.state.headerImage)}
+          <div className="max-w-[1000px] px-2 pt-8 pb-4 m-auto grid items-center lg:grid-cols-[1.8fr_1fr] grid-cols-1 gap-5 row-gap-0 box-content">
+            <div className="order-2 lg:order-1">
+              {profileDataBox(
+                props.state.header,
+                props.state.subheading,
+                props.socialMediaIconLinks
+              )}
+            </div>
+            <div className="order-1 lg:order-2">
+              {profileImageBlock(props.state.headerImage)}
+            </div>
           </div>
 
-          <div className={style.profile_container}>
+          <div className="w-[1000px] px-2 pt-8 pb-4 mx-auto grid items-start grid-cols-[1fr_1fr] gap-5 box-content">
             {bookingsBlock()}
 
             {mailingListBlock()}
