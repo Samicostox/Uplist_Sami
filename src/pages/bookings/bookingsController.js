@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback,useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSearchParams } from 'react-router-dom';
 import TokenService from '../../request-model/services/token.service';
@@ -26,6 +26,98 @@ const BookingsController = (props) => {
         history: [],
     })
 
+    const [bookingsState2, setBookingsState2] = React.useState({
+        outgoing: [],
+        incoming: [],
+        upcoming: [],
+        history: [],
+    })
+
+    const [bookingsList, setBookingsList] = React.useState([]);
+
+   
+    const fetchAllData = useCallback(async (userId) => {
+        setLoading(true);
+        const loggedInUser = TokenService.getUser(); // Ensure the user is logged in and we have their ID.
+        if (!loggedInUser) {
+            props.errorCallback("You must be logged in to view this page");
+            navigate('/auth/login');
+            return;
+        }
+    
+        try {
+            const resp = await BookingService.getAllEnquiries();
+            if (resp.status === 200) {
+                
+               
+
+                const bookings = resp.data;
+                const outgoingBookings = [];
+                const incomingBookings = [];
+                const upcomingBookings = [];
+                const historyBookings = [];
+    
+                // Using traditional for-loop for better async handling
+                for (let booking of bookings) {
+                    const masterBookingDetails = booking.master_booking_details;
+                    const currentTimestamp = new Date();
+                    const startDatetime = new Date(booking.start_datetime);
+                    const endDatetime = new Date(booking.end_datetime);
+                    const isUser = masterBookingDetails.user_info.id === userId;
+                    console.log(masterBookingDetails.user_info.id)
+                    console.log(userId)
+                    console.log(isUser)
+                    const isArtist = masterBookingDetails.artist_info.id === loggedInUser.id;
+                    console.log("isArtist")
+                    console.log(isArtist)
+    
+                    // Determine the category based on booking status and dates
+                    if (['pending_artist_action', 'pending_user_action', 'pending_payment','draft'].includes(masterBookingDetails.status)) {
+                        if (startDatetime < currentTimestamp) {
+                        if (masterBookingDetails.status == "pending_artist_action") {
+                            incomingBookings.push({ ...booking, allowRatings: false });
+                        }
+                        else  {
+                            outgoingBookings.push({ ...booking, allowRatings: false });
+                        }
+                    }
+                    } else if (masterBookingDetails.status === 'rejected_by_artist' && isUser) {
+                        console.log("toto")
+                        outgoingBookings.push({ ...booking, allowRatings: false });
+                    } else if (masterBookingDetails.status === 'paid') {
+                        if (endDatetime > currentTimestamp) {
+                            console.log("tata")
+                            upcomingBookings.push({ ...booking, allowRatings: false });
+                        } else {
+                            const targetArray = isUser ? historyBookings : (isArtist ? historyBookings : null);
+                            if (targetArray) {
+                                targetArray.push({ ...booking, allowRatings: isUser, completed: true });
+                            }
+                        }
+                    } else if (masterBookingDetails.status === 'refunded') {
+                        historyBookings.push({ ...booking, allowRatings: false });
+                    }
+                }
+    
+                // Update state with categorized bookings
+                setBookingsState({
+                    outgoing: outgoingBookings,
+                    incoming: incomingBookings,
+                    upcoming: upcomingBookings,
+                    history: historyBookings,
+                });
+            }
+        } catch (err) {
+            console.error("Failed to fetch data:", err);
+            // Handle error
+        }
+        setLoading(false);
+    }, [navigate, props]);
+     // Only include actual dependencies
+     useEffect(() => {
+        console.log("Updated bookingsList:", bookingsList); 
+        console.log("Updated bookingsstate:", bookingsState);// This will log the updated state whenever it changes.
+    }, [bookingsList,bookingsState]);
 
 
     const fetchBookings =  useCallback( async(userId) => {
@@ -61,6 +153,7 @@ const BookingsController = (props) => {
                         console.log("error getting enquiry: ", err)
                     }
                 }
+             
 
                 let bookingsWithArtist = []
 
@@ -138,6 +231,11 @@ const BookingsController = (props) => {
                 const incomingBookings = []
                 const upcomingBookings = []
                 const historyBookings = []
+                console.log("bookingsWithRatings")
+                console.log(JSON.stringify(bookingsWithRatings[0]))
+                console.log(bookingsList)
+
+                
 
                 await bookingsWithRatings.forEach( booking => {
                     let currentTimestamp = new Date()
@@ -218,7 +316,7 @@ const BookingsController = (props) => {
                 })
 
 
-                await setBookingsState({
+                await setBookingsState2({
                     outgoing: outgoingBookings,
                     incoming: incomingBookings,
                     upcoming: upcomingBookings,
@@ -268,10 +366,12 @@ const BookingsController = (props) => {
 
     React.useEffect(() => {
         fetchData()
-    }, [fetchData])
+        fetchAllData()
+    }, [fetchData, fetchAllData])
 
     const onAction = () => {
         fetchData();
+        fetchAllData();
     }
 
     return (
@@ -282,7 +382,7 @@ const BookingsController = (props) => {
             searchPage={searchParams.get("page")}
 
             userState={userState}
-            bookingsState={bookingsState}
+            bookingsState={bookingsState2}
             loading={loading}
             onAction={onAction}
 

@@ -11,6 +11,11 @@ const getBooking = (bookingId) => {
   return api.get(`/bookings/${bookingId}/`);
 };
 
+
+const getAllEnquiries = () => {
+  return api.get(`/bookings/all-enquiries/`);
+};
+
 // get all bookings // this gets both outgoing, incoming enquiries, future bookings and booking history
 // needs to be sorted seperately on client
 const getAllBookings = () => {
@@ -84,6 +89,7 @@ const BookingService = {
   approveBooking,
   rejectBooking,
   payBooking,
+  getAllEnquiries,
 };
 
 export default BookingService;

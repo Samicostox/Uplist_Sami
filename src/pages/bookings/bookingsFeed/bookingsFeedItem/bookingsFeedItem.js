@@ -356,6 +356,7 @@ const BookingsFeedItem = (props) => {
 
         <div className={style.container}>
           <div className={style.image_contaienr}>
+          
             <NavLink
               to={"/biolink/" + props.booking?.artistState?.user?.username}
             >

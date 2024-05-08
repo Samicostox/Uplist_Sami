@@ -156,15 +156,20 @@ const Bookings = (props) => {
         let feedItems = []
         if (navValue === "outgoing"){
             feedItems = props.bookingsState.outgoing
+            console.log("outgoing")
+            console.log(feedItems)
         }
         else if (navValue === "incoming"){
             feedItems = props.bookingsState.incoming
+            console.log(feedItems)
         }
         else if (navValue === "upcoming"){
             feedItems = props.bookingsState.upcoming
+            console.log(feedItems)
         }
         else if (navValue === "history"){
             feedItems = props.bookingsState.history
+            console.log(feedItems)
         }
         
         
