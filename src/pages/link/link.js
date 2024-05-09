@@ -397,7 +397,7 @@ function Profile(props) {
       return <></>;
     }
     return (
-      <div className="w-[490px] rounded-lg mx-auto shadow-lg bg-white bg-cover bg-center justify-center items-center text-left text-[var(--white-color)] transition duration-200 ease-in-out">
+      <div className="max-w-[490px] w-full rounded-lg mx-auto shadow-lg bg-white bg-cover bg-center justify-center items-center text-left text-[var(--white-color)] transition duration-200 ease-in-out">
         <div className="text-left pt-5 pl-5 pb-2 text-2xl font-medium text-[var(--font-color-1)]">
           Subscribe to their mailing list!
         </div>
