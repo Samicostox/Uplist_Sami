@@ -5,7 +5,7 @@ import CounterBooking from "../../counterBooking/counterBooking";
 import { NavLink } from "react-router-dom";
 import Rating from "../../../../components/biolinkFeedItem/rating/rating";
 
-const BookingsFeedItem = (props) => {
+const BookingsFeedItem3 = (props) => {
 
   console.log('before')
   console.log(props.booking?.artistState?.pageImage)
@@ -340,8 +340,8 @@ const BookingsFeedItem = (props) => {
   };
 
   return (
-    <div data-testid="bookings-feed-item">
-      {counterModalOpen && (
+    <div className="bg-white px-4 py-5 sm:px-6 shadow-xl max-w-7xl mx-6 rounded-lg w-full ">
+         {counterModalOpen && (
         <CounterBooking
           booking={props.booking}
           onAction={props.onAction}
@@ -351,74 +351,81 @@ const BookingsFeedItem = (props) => {
           successCallback={props.successCallback}
         />
       )}
-
-      <div className={style.bookingsFeedItem}>
-        <Tags tags={[props.userState.artist_type]} />
-
-        <div className={style.container}>
-          <div className={style.image_contaienr}>
-
-           
-          
-            <NavLink
-              to={"/biolink/" + props.booking?.artistState?.user?.username}>
-              {renderProfileImage(props.booking?.artistState?.pageImage)}
-            </NavLink>
-          </div>
-          <div className={style.content}>
-            <div className={style.title}>
-              {props.booking?.artistState?.user?.username}
-            </div>
-
-            <div className={style.description}>
-              {props.booking?.artistState?.description}
-            </div>
-
-            <div className={style.price}>
-              Price: {" £"}
-              {props.booking?.enquiry?.price}
-            </div>
-
-            {renderDateFormated(
-              props.booking?.enquiry?.start_datetime,
-              props.booking?.enquiry?.end_datetime
-            )}
-
-            <div className={style.notes}>
-              <b> User notes: </b>{" "}
-              {props.booking?.enquiry?.notes
-                ? props.booking?.enquiry?.notes
-                : "n/a"}
-            </div>
-
-            <div className={style.status}>
-              {renderStatus(props.booking.status)}
-            </div>
-
-            {props.booking?.allowRatings && (
-              <div className={style.rating_container}>
-                <div className={style.rating}>
-                  <b>Rating: </b>
-                  <span className={style.rating_item}>
-                    <Rating
-                      className={style.rating_item}
-                      ratingState={props.ratingState}
-                      rating={getRating()}
-                      onRatingChange={props.onRatingChange}
-                    />
-                  </span>
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-
-        <div className={style.action_buttons_container}>
-          {renderActionButtons(props.booking.status)}
-        </div>
+    <div className="flex space-x-3">
+      <div className="flex-shrink-0">
+        <img
+          className="h-10 w-10 rounded-full"
+          src={props.booking?.artistState?.pageImage}
+          alt=""
+        />
+      </div>
+      <div className="min-w-0 flex-1">
+        <p className="text-sm font-semibold text-gray-900">
+     
+          {props.booking?.artistState?.user?.username}
+         
+        </p>
+        <p className="text-sm text-gray-500">
+          <a href="#" className="hover:underline">
+         { props.booking?.enquiry?.start_datetime} - { props.booking?.enquiry?.end_datetime} 
+          </a>
+        </p>
+      </div>
+      <div className="flex flex-shrink-0 self-center">
+      <span className="inline-flex items-center gap-x-1.5 rounded-md bg-red-100 px-2 py-1 text-xs font-medium text-red-700">
+      <svg class="w-2.5 h-2.5 me-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+<path d="M10 0a10 10 0 1 0 10 10A10.011 10.011 0 0 0 10 0Zm3.982 13.982a1 1 0 0 1-1.414 0l-3.274-3.274A1.012 1.012 0 0 1 9 10V6a1 1 0 0 1 2 0v3.586l2.982 2.982a1 1 0 0 1 0 1.414Z"/>
+</svg>
+3 days left
+</span>
       </div>
     </div>
+    <h1 className="text-xl font-bold text-gray-900 mt-4 max-w-3xl ">
+    Price: {" £"}
+              {props.booking?.enquiry?.price}
+    </h1>
+    <p className="text-sm  text-gray-900 mt-2 max-w-full break-words">
+        {props.booking?.artistState?.description}
+    </p>
+    
+   <div className="flex items-start gap-2.5 mt-6 bg-gray-100 p-6 rounded-lg shadow-sm">
+  <img className="w-8 h-8 rounded-full" src="https://res.cloudinary.com/dl2adjye7/image/upload/v1715253503/blank-profile-picture-973460_960_720_1_fuwup7.webp" alt="Jese image"/>
+  <div className="flex flex-col flex-1 min-w-0">
+      <div className="flex items-center space-x-2">
+          <span className="text-sm font-semibold text-gray-900">User Request</span>
+      </div>
+      <div className="py-2 bg-gray-100 rounded-lg  overflow-hidden break-words">
+    <p className="text-gray-900 text-sm">
+        {props.booking?.enquiry?.notes ? props.booking?.enquiry?.notes : "n/a"}
+    </p>
+</div>
+      <div className="inline-flex "> 
+          <span className="inline-flex items-center gap-x-1.5 rounded-md bg-red-100 px-2 py-1 text-xs font-medium text-red-700">
+              <svg className="h-1.5 w-1.5 fill-red-500" viewBox="0 0 6 6" aria-hidden="true">
+                <circle cx={3} cy={3} r={3} />
+              </svg>
+              {props.booking.status}
+          </span>
+          
+      </div>
+      
+      
+  </div>
+  
+  
+</div>
+<div className="mt-4 ">
+{renderActionButtons(props.booking.status)}
+
+</div>
+
+
+
+
+
+    
+  </div>
   );
 };
 
-export default BookingsFeedItem;
+export default BookingsFeedItem3;

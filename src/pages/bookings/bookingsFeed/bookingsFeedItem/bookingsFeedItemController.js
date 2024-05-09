@@ -2,6 +2,7 @@ import React, {useEffect, useCallback} from 'react';
 import BookingsFeedItem from './bookingsFeedItem';
 import UserService from '../../../../request-model/services/user.service';
 import BookingService from '../../../../request-model/services/booking/booking.service';
+import BookingsFeedItem3 from './bookingsFeedItem3';
 
 
 const BookingsFeedItemController = (props) => {
@@ -204,7 +205,7 @@ const BookingsFeedItemController = (props) => {
     }, [props])
 
     return (
-        <BookingsFeedItem 
+        <BookingsFeedItem3
             successCallback={props.successCallback}
             errorCallback={props.errorCallback}    
 
