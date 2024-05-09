@@ -27,148 +27,7 @@ const BookingsFeedItem3 = (props) => {
     }
   };
 
-  const renderDateFormated = (start_datetime, end_datetime) => {
-    let startDate = new Date(start_datetime);
-    let startTime = startDate.toLocaleTimeString([], {
-      hour: "2-digit",
-      minute: "2-digit",
-    });
-    let endDate = new Date(end_datetime);
-    let endTime = endDate.toLocaleTimeString([], {
-      hour: "2-digit",
-      minute: "2-digit",
-    });
 
-    return (
-      <div className={style.date}>
-        <b> Start: </b> <span>{startDate.toDateString()} </span>{" "}
-        <span>{startTime}</span>
-        <br />
-        <b> End: </b>
-        <span>{endDate.toDateString()} </span>
-        <span>{endTime}</span>
-      </div>
-    );
-  };
-
-  const renderStatus = (status) => {
-    const isArtist = props.booking?.artist === props.userState.id;
-    const isUser = props.booking?.user === props.userState.id;
-
-    let color = "grey";
-
-    if (status === "pending_artist_action") {
-      if (isArtist) {
-        // actions accepti decline counter
-        // message respond to user
-        color = "blue";
-        return (
-          <div className={style.status}>
-            <b>Status:</b>{" "}
-            <span style={{ color: `${color}` }}> respond to the enquiry </span>
-          </div>
-        );
-      } else if (isUser) {
-        color = "orange";
-        return (
-          <div className={style.status}>
-            <b>Status:</b>{" "}
-            <span style={{ color: `${color}` }}>
-              {" "}
-              waiting for the artist to respond{" "}
-            </span>
-          </div>
-        );
-      }
-    } else if (status === "pending_user_action") {
-      if (isArtist) {
-        color = "orange";
-        return (
-          <div className={style.status}>
-            <b>Status:</b>{" "}
-            <span style={{ color: `${color}` }}>
-              {" "}
-              waiting for the users response{" "}
-            </span>
-          </div>
-        );
-      } else if (isUser) {
-        color = "blue";
-        return (
-          <div className={style.status}>
-            <b>Status:</b>{" "}
-            <span style={{ color: `${color}` }}>
-              {" "}
-              respond to the updated enquiry{" "}
-            </span>
-          </div>
-        );
-      }
-    } else if (status === "rejected_by_artist") {
-      color = "red";
-      if (isUser) {
-        return (
-          <div className={style.status}>
-            <b>Status:</b>{" "}
-            <span style={{ color: `${color}` }}> rejected by the artist </span>
-          </div>
-        );
-      }
-    } else if (status === "canceclled_by_user") {
-      color = "red";
-      return (
-        <div className={style.status}>
-          <b>Status:</b> <span style={{ color: `${color}` }}> cancelled </span>
-        </div>
-      );
-    } else if (status === "pending_payment") {
-      if (isArtist) {
-        color = "orange";
-        return (
-          <div className={style.status}>
-            <b>Status:</b>{" "}
-            <span style={{ color: `${color}` }}> waiting for payment </span>
-          </div>
-        );
-      } else if (isUser) {
-        color = "blue";
-        return (
-          <div className={style.status}>
-            <b>Status:</b>{" "}
-            <span style={{ color: `${color}` }}>
-              {" "}
-              pay now to confirm booking{" "}
-            </span>
-          </div>
-        );
-      }
-    } else if (status === "paid") {
-      // if history, allowRatings = true then status = "service_completed"
-      if (!props.booking?.completed) {
-        color = "green";
-        return (
-          <div className={style.status}>
-            <b>Status:</b>{" "}
-            <span style={{ color: `${color}` }}> booking confirmed </span>
-          </div>
-        );
-      } else if (props.booking?.completed) {
-        color = "green";
-        return (
-          <div className={style.status}>
-            <b>Status:</b>{" "}
-            <span style={{ color: `${color}` }}> service completed </span>
-          </div>
-        );
-      }
-    } else if (status === "refunded") {
-      return (
-        <div className={style.status}>
-          <b>Status:</b> <span style={{ color: `${color}` }}> refunded </span>
-        </div>
-      );
-    }
-  };
 
   const requestRefundButton = () => {
     const isArtist = props.booking?.artist === props.userState.id;
@@ -320,6 +179,25 @@ const BookingsFeedItem3 = (props) => {
     }
   };
 
+  const calculateDateStatus = (start, end) => {
+    const now = new Date();
+    const startDate = new Date(start);
+    const endDate = new Date(end);
+    const oneDay = 1000 * 60 * 60 * 24; // milliseconds in one day
+  
+    if (now < startDate) {
+      const daysToStart = Math.round((startDate - now) / oneDay);
+      return { text: `${daysToStart} days left`, color: 'bg-green-100 text-green-700' }; // green before the event starts
+    } else if (now >= startDate && now <= endDate) {
+      return { text: 'Currently happening', color: 'bg-green-500 text-white' }; // darker green during the event
+    } else {
+      const daysSinceEnd = Math.round((now - endDate) / oneDay);
+      return { text: `${daysSinceEnd} days ago`, color: 'bg-red-100 text-red-700' }; // red after the event ends
+    }
+  };
+
+  const dateStatus = calculateDateStatus(props.booking?.enquiry?.start_datetime, props.booking?.enquiry?.end_datetime);
+
   const [counterModalOpen, setCounterModalOpen] = React.useState(false);
   const userCounter = () => {
     setCounterModalOpen(true);
@@ -338,6 +216,14 @@ const BookingsFeedItem3 = (props) => {
       return props.booking?.userRating;
     } else return props.artistState?.user.average_rating;
   };
+
+  const formatDate = (dateString) => {
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', timeZoneName: 'short' };
+    return new Date(dateString).toLocaleString('en-GB', options);
+  };
+
+  const formattedStartDateTime = formatDate(props.booking?.enquiry?.start_datetime);
+  const formattedEndDateTime = formatDate(props.booking?.enquiry?.end_datetime);
 
   return (
     <div className="bg-white px-4 py-5 sm:px-6 shadow-xl max-w-7xl mx-6 rounded-lg w-full ">
@@ -367,19 +253,20 @@ const BookingsFeedItem3 = (props) => {
         </p>
         <p className="text-sm text-gray-500">
           <a href="#" className="hover:underline">
-         { props.booking?.enquiry?.start_datetime} - { props.booking?.enquiry?.end_datetime} 
+          {formattedStartDateTime} - {formattedEndDateTime}
           </a>
         </p>
       </div>
-      <div className="flex flex-shrink-0 self-center">
-      <span className="inline-flex items-center gap-x-1.5 rounded-md bg-red-100 px-2 py-1 text-xs font-medium text-red-700">
-      <svg class="w-2.5 h-2.5 me-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-<path d="M10 0a10 10 0 1 0 10 10A10.011 10.011 0 0 0 10 0Zm3.982 13.982a1 1 0 0 1-1.414 0l-3.274-3.274A1.012 1.012 0 0 1 9 10V6a1 1 0 0 1 2 0v3.586l2.982 2.982a1 1 0 0 1 0 1.414Z"/>
-</svg>
-3 days left
-</span>
+     
+    <div className="flex flex-shrink-0 self-center">
+          <span className={`inline-flex items-center gap-x-1.5 rounded-md px-2 py-1 text-xs font-medium ${dateStatus.color}`}>
+            <svg className="w-2.5 h-2.5 me-1" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 0a10 10 0 1 0 10 10A10.011 10.011 0 0 0 10 0Zm3.982 13.982a1 1 0 0 1-1.414 0l-3.274-3.274A1.012 1.012 0 0 1 9 10V6a1 1 0 0 1 2 0v3.586l2.982 2.982a1 1 0 0 1 0 1.414Z"/>
+            </svg>
+            {dateStatus.text}
+          </span>
+        </div>
       </div>
-    </div>
     <h1 className="text-xl font-bold text-gray-900 mt-4 max-w-3xl ">
     Price: {" £"}
               {props.booking?.enquiry?.price}
