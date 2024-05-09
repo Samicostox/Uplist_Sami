@@ -7,6 +7,8 @@ import style from "./link.module.css";
 import { getWebsiteLogo } from "./websiteLogos";
 import UserService from "../../request-model/services/user.service";
 import EditBanner from "./edit/edit-banner/editBanner";
+import shadergradient from "./shadergradient2.gif";
+import background from "./background.gif";
 
 function Profile(props) {
   const renderLinkImage = (url) => {
@@ -44,7 +46,7 @@ function Profile(props) {
 
   const profileDataBox = (heading, subheading, socialMediaIconLinks) => {
     return (
-      <div className="w-full shadow-md h-80 max-w-2xl bg-[var(--overlay-3)]  border-[var(--overlay-3)] rounded-lg p-6 box-border m-auto overflow-hidden text-ellipsis break-words flex justify-center flex-col">
+      <div className="w-full shadow-md h-80 max-w-2xl bg-white  border-[var(--overlay-3)] rounded-lg p-6 box-border m-auto overflow-hidden text-ellipsis break-words flex justify-center flex-col">
         <div className="pb-2 font-medium text-5xl text-left w-full overflow-hidden text-ellipsis flex items-center justify-between">
           {heading}
           <button
@@ -192,7 +194,7 @@ function Profile(props) {
           key={link.id}
         >
           <div
-            className="h-16 w-full rounded-md pl-8 bg-[var(--overlay-5)] text-[var(--font-color-1)] text-lg leading-[6.1rem] font-semibold whitespace-nowrap overflow-hidden text-ellipsis flex items-center transition duration-200 ease-in-out"
+            className="h-16 w-full rounded-md pl-8 bg-white text-[var(--font-color-1)] text-lg leading-[6.1rem] font-semibold whitespace-nowrap overflow-hidden text-ellipsis flex items-center transition duration-200 ease-in-out"
             data-testid="link-item"
           >
             {renderLinkImage(link.url)}
@@ -393,8 +395,8 @@ function Profile(props) {
       return <></>;
     }
     return (
-      <div className="w-[490px] rounded-lg shadow-lg bg-[var(--overlay-2)] bg-cover bg-center justify-center items-center text-left text-[var(--white-color)] transition duration-200 ease-in-out">
-        <div className="text-left pt-5 pl-5 text-2xl font-medium text-[var(--font-color-1)]">
+      <div className="w-[490px] rounded-lg shadow-lg bg-white bg-cover bg-center justify-center items-center text-left text-[var(--white-color)] transition duration-200 ease-in-out">
+        <div className="text-left pt-5 pl-5 pb-2 text-2xl font-medium text-[var(--font-color-1)]">
           Subscribe to their mailing list!
         </div>
         <div className="">
@@ -402,14 +404,14 @@ function Profile(props) {
             {!subscribed ? (
               <>
                 <input
-                  className="w-[70%] h-15 rounded-sm border-2 pl-4 text-lg leading-[60px]  font-medium text-black transition duration-200 ease-in-out"
+                  className="w-[70%] h-15 rounded-lg border-2 pl-4 text-lg leading-[60px] -mr-2 font-medium text-black transition duration-200 ease-in-out"
                   type="email"
                   placeholder="Email Address"
                   value={mailingListInput}
                   onChange={handleMailListEmailChange}
                 />
                 <button
-                  className="px-6 h-10 py-2 bg-blue-500 text-white rounded-r-lg font-bold transform hover:-translate-y-1 transition duration-400"
+                  className="px-6 h-10 py-2 bg-blue-500 text-white rounded-r-lg font-bold transform "
                   onClick={onSubscribe}
                 >
                   Subscribe
@@ -432,7 +434,16 @@ function Profile(props) {
     ? ""
     : style.full;
   return (
-    <div className="pt-20">
+    <div
+      className="pt-20"
+      style={{
+        width: "100%",
+        height: "100%",
+        backgroundImage: `url(${background})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
       <EditBanner canEdit={props.editable} />
       {!props.pageLoading && (
         <div className={style.profile_content}>
