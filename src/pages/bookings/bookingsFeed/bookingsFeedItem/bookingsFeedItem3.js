@@ -355,7 +355,7 @@ const BookingsFeedItem3 = (props) => {
       <div className="flex-shrink-0">
         <img
           className="h-10 w-10 rounded-full"
-          src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+          src={props.booking?.artistState?.pageImage}
           alt=""
         />
       </div>
@@ -384,17 +384,17 @@ const BookingsFeedItem3 = (props) => {
     Price: {" £"}
               {props.booking?.enquiry?.price}
     </h1>
-    <p className="text-sm text-gray-900 mt-2 max-w-6xl">
-    {props.booking?.artistState?.description}    
+    <p className="text-sm  text-gray-900 mt-2 max-w-full break-words">
+        {props.booking?.artistState?.description}
     </p>
     
    <div className="flex items-start gap-2.5 mt-6 bg-gray-100 p-6 rounded-lg shadow-sm">
-  <img className="w-8 h-8 rounded-full" src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="Jese image"/>
+  <img className="w-8 h-8 rounded-full" src="https://res.cloudinary.com/dl2adjye7/image/upload/v1715253503/blank-profile-picture-973460_960_720_1_fuwup7.webp" alt="Jese image"/>
   <div className="flex flex-col flex-1 min-w-0">
       <div className="flex items-center space-x-2">
           <span className="text-sm font-semibold text-gray-900">User Request</span>
       </div>
-      <div className="py-4 bg-gray-100 rounded-lg  overflow-hidden break-words">
+      <div className="py-2 bg-gray-100 rounded-lg  overflow-hidden break-words">
     <p className="text-gray-900 text-sm">
         {props.booking?.enquiry?.notes ? props.booking?.enquiry?.notes : "n/a"}
     </p>
