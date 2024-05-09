@@ -123,9 +123,9 @@ function Profile(props) {
           href={props.skiddleLinks[0].url}
           target="_blank"
           rel="noreferrer"
-          className="w-full bg-black no-underline rounded-md shadow-lg  flex flex-col justify-center items-center text-center text-2xl text-[var(--white-color)] font-medium transition duration-200 ease-in-out hover:cursor-pointer"
+          className="w-full mx-auto max-w-[490px] bg-black no-underline rounded-md shadow-lg  flex flex-col justify-center items-center text-center text-2xl text-[var(--white-color)] font-medium transition duration-200 ease-in-out hover:cursor-pointer"
         >
-          <div class="relative max-h-40 mx-auto">
+          <div class="relative  max-h-40 mx-auto">
             <img
               class=" w-[490px] max-h-40 object-cover rounded-md"
               src="/pictures/link/event.jpeg"
@@ -153,7 +153,7 @@ function Profile(props) {
     ) {
       return (
         <NavLink to={`/book/${props.state.username}`}>
-          <div class="relative max-h-40 mx-auto">
+          <div class="relative max-w-[490px] max-h-40 mx-auto">
             <img
               class=" w-[490px] max-h-40 object-cover rounded-md"
               src="/pictures/link/booking.jpeg"
@@ -188,13 +188,13 @@ function Profile(props) {
       let blockContent = linksInBlock.map((link) => (
         <a
           href={link.url}
-          className="no-underline text-[var(--overlay-12)]  flex"
+          className="no-underline mx-auto text-[var(--overlay-12)]  flex"
           target="_blank"
           rel="noreferrer"
           key={link.id}
         >
           <div
-            className="h-16 w-full rounded-md pl-8 bg-white text-[var(--font-color-1)] text-lg leading-[6.1rem] font-semibold whitespace-nowrap overflow-hidden text-ellipsis flex items-center transition duration-200 ease-in-out"
+            className="h-16 w-full rounded-md mx-auto pl-8 bg-white text-[var(--font-color-1)] text-lg leading-[6.1rem] font-semibold whitespace-nowrap overflow-hidden text-ellipsis flex items-center transition duration-200 ease-in-out"
             data-testid="link-item"
           >
             {renderLinkImage(link.url)}
@@ -207,7 +207,7 @@ function Profile(props) {
     }
 
     return blocks.map((block) => (
-      <div className=" w-full bg-[var(--overlay-3)] rounded-lg border-2 border-[var(--overlay-3)] block">
+      <div className=" w-full bg-[var(--overlay-3)] max-w-[490px] rounded-lg border-2 border-[var(--overlay-3)] block">
         <div className="">{block}</div>
       </div>
     ));
@@ -255,7 +255,7 @@ function Profile(props) {
     }
 
     return blocks.map((block) => (
-      <div className="w-full rounded-lg overflow-hidden">
+      <div className="w-full mx-auto max-w-[490px] rounded-lg overflow-hidden">
         <div className=" rounded-lg shadow-md">{block}</div>
       </div>
     ));
@@ -309,7 +309,9 @@ function Profile(props) {
     }
 
     return blocks.map((block) => (
-      <div className="rounded-lg bg-[var(--overlay-3)] shadow-lg ">{block}</div>
+      <div className="rounded-lg mx-auto max-w-[490px] sm:w-[490px] md:w-[490px] bg-[var(--overlay-3)] shadow-lg ">
+        {block}
+      </div>
     ));
   };
 
@@ -355,7 +357,7 @@ function Profile(props) {
     }
 
     return blocks.map((block) => (
-      <div className="w-full  overflow-hidden rounded-lg shadow-lg">
+      <div className="w-full max-w-[490px] mx-auto overflow-hidden rounded-lg shadow-lg">
         {block}
       </div>
     ));
@@ -395,7 +397,7 @@ function Profile(props) {
       return <></>;
     }
     return (
-      <div className="w-[490px] rounded-lg shadow-lg bg-white bg-cover bg-center justify-center items-center text-left text-[var(--white-color)] transition duration-200 ease-in-out">
+      <div className="w-[490px] rounded-lg mx-auto shadow-lg bg-white bg-cover bg-center justify-center items-center text-left text-[var(--white-color)] transition duration-200 ease-in-out">
         <div className="text-left pt-5 pl-5 pb-2 text-2xl font-medium text-[var(--font-color-1)]">
           Subscribe to their mailing list!
         </div>
@@ -460,7 +462,7 @@ function Profile(props) {
             </div>
           </div>
 
-          <div className="w-[1000px] px-2 pt-8 pb-4 mx-auto grid items-start grid-cols-[1fr_1fr] gap-5 box-content">
+          <div className="max-w-[1000px] px-2 pt-8 pb-4 mx-auto grid justify-items-center items-start  grid-cols-1 lg:grid-cols-[1fr_1fr] gap-5 box-content">
             {bookingsBlock()}
 
             {mailingListBlock()}
