@@ -225,6 +225,38 @@ const BookingsFeedItem3 = (props) => {
   const formattedStartDateTime = formatDate(props.booking?.enquiry?.start_datetime);
   const formattedEndDateTime = formatDate(props.booking?.enquiry?.end_datetime);
 
+  const getStatusStyles = (status) => {
+    const styles = {
+      draft: { text: "bg-gray-200 text-gray-800", ball: "fill-gray-500" },
+      pending_artist_action: { text: "bg-blue-100 text-blue-800", ball: "fill-blue-500" },
+      pending_user_action: { text: "bg-orange-100 text-orange-800", ball: "fill-orange-500" },
+      rejected_by_artist: { text: "bg-red-100 text-red-800", ball: "fill-red-500" },
+      cancelled_by_user: { text: "bg-red-700 text-white", ball: "fill-red-900" },
+      pending_payment: { text: "bg-yellow-100 text-yellow-800", ball: "fill-yellow-500" },
+      paid: { text: "bg-green-100 text-green-800", ball: "fill-green-500" },
+      refunded: { text: "bg-purple-100 text-purple-800", ball: "fill-purple-500" }
+    };
+  
+    return styles[status] || { text: "bg-gray-300 text-black", ball: "fill-gray-700" }; // Default styles if status is unrecognized
+  };
+  const renderStatusTag = () => {
+    const status = props.booking?.status;
+    const { text, ball } = getStatusStyles(status);
+
+    return (
+      <div className="inline-flex">
+        <span className={`inline-flex items-center gap-x-1.5 rounded-md px-2 py-1 text-xs font-medium ${text}`}>
+          <svg className="h-1.5 w-1.5" viewBox="0 0 6 6" aria-hidden="true">
+            <circle cx="3" cy="3" r="3" className={`${ball}`} />
+          </svg>
+          {status}
+        </span>
+      </div>
+    );
+  };  
+
+  
+
   return (
     <div className="bg-white px-4 py-5 sm:px-6 shadow-xl max-w-7xl mx-6 rounded-lg w-full ">
          {counterModalOpen && (
@@ -286,15 +318,7 @@ const BookingsFeedItem3 = (props) => {
         {props.booking?.enquiry?.notes ? props.booking?.enquiry?.notes : "n/a"}
     </p>
 </div>
-      <div className="inline-flex "> 
-          <span className="inline-flex items-center gap-x-1.5 rounded-md bg-red-100 px-2 py-1 text-xs font-medium text-red-700">
-              <svg className="h-1.5 w-1.5 fill-red-500" viewBox="0 0 6 6" aria-hidden="true">
-                <circle cx={3} cy={3} r={3} />
-              </svg>
-              {props.booking.status}
-          </span>
-          
-      </div>
+{renderStatusTag()}
       
       
   </div>
