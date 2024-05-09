@@ -131,19 +131,22 @@
     right: 15px;
 
 }
+/* bookingsFeedItem.module.css */
 .action_button {
+    padding: 8px 16px; /* Adjust padding to suitable values */
+    background-color: #007bff; /* Example color */
+    color: white;
     border: none;
-    box-sizing: border-box;
-    border-radius: 5px;
-    padding: 5px 10px;
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 25px;
-    font-family: sans-serif;
-    margin-bottom: 0.5rem;
-    text-align: left;
+    border-radius: 4px;
     cursor: pointer;
-    margin-left: 10px;
+    display: inline-block; /* This makes the button size to content */
+    text-align: center;
+}
+
+/* For more specific adjustments, you can reduce the padding or set min-width if needed */
+.action_button.refund {
+    padding: 8px 12px; /* Slightly smaller padding */
+    min-width: 100px; /* Minimum width to handle very small content gracefully */
 }
 
 .action_button.accept{

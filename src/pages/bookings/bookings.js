@@ -179,7 +179,7 @@ const Bookings = (props) => {
                 {feedItems.length > 0 ? (
                     feedItems.map((booking, index) => {
                         return (
-                            <div className={style.feed_item} data-testid="booking-card">
+                            <div className="mt-4" data-testid="booking-card">
                                 <BookingsFeedItemController
                                 key={index} 
                                 booking={booking} userState={props.userState}
