@@ -16,6 +16,10 @@ const getAllEnquiries = () => {
   return api.get(`/bookings/all-enquiries/`);
 };
 
+const get_all_detailed_enquiries = () => {
+  return api.get(`/bookings/get_all_detailed_enquiries/`);
+};
+
 // get all bookings // this gets both outgoing, incoming enquiries, future bookings and booking history
 // needs to be sorted seperately on client
 const getAllBookings = () => {
@@ -90,6 +94,7 @@ const BookingService = {
   rejectBooking,
   payBooking,
   getAllEnquiries,
+  get_all_detailed_enquiries,
 };
 
 export default BookingService;

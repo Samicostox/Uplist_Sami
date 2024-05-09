@@ -26,182 +26,35 @@ const BookingsController = (props) => {
         history: [],
     })
 
-    const [bookingsState2, setBookingsState2] = React.useState({
-        outgoing: [],
-        incoming: [],
-        upcoming: [],
-        history: [],
-    })
 
     const [bookingsList, setBookingsList] = React.useState([]);
 
    
-    const fetchAllData = useCallback(async (userId) => {
-        setLoading(true);
-        const loggedInUser = TokenService.getUser(); // Ensure the user is logged in and we have their ID.
-        if (!loggedInUser) {
-            props.errorCallback("You must be logged in to view this page");
-            navigate('/auth/login');
-            return;
-        }
     
+
+    const fetchAllBookings =  useCallback( async(userId) => {
         try {
-            const resp = await BookingService.getAllEnquiries();
-            if (resp.status === 200) {
-                
-               
-
-                const bookings = resp.data;
-                const outgoingBookings = [];
-                const incomingBookings = [];
-                const upcomingBookings = [];
-                const historyBookings = [];
-    
-                // Using traditional for-loop for better async handling
-                for (let booking of bookings) {
-                    const masterBookingDetails = booking.master_booking_details;
-                    const currentTimestamp = new Date();
-                    const startDatetime = new Date(booking.start_datetime);
-                    const endDatetime = new Date(booking.end_datetime);
-                    const isUser = masterBookingDetails.user_info.id === userId;
-                    console.log(masterBookingDetails.user_info.id)
-                    console.log(userId)
-                    console.log(isUser)
-                    const isArtist = masterBookingDetails.artist_info.id === loggedInUser.id;
-                    console.log("isArtist")
-                    console.log(isArtist)
-    
-                    // Determine the category based on booking status and dates
-                    if (['pending_artist_action', 'pending_user_action', 'pending_payment','draft'].includes(masterBookingDetails.status)) {
-                        if (startDatetime < currentTimestamp) {
-                        if (masterBookingDetails.status == "pending_artist_action") {
-                            incomingBookings.push({ ...booking, allowRatings: false });
-                        }
-                        else  {
-                            outgoingBookings.push({ ...booking, allowRatings: false });
-                        }
-                    }
-                    } else if (masterBookingDetails.status === 'rejected_by_artist' && isUser) {
-                        console.log("toto")
-                        outgoingBookings.push({ ...booking, allowRatings: false });
-                    } else if (masterBookingDetails.status === 'paid') {
-                        if (endDatetime > currentTimestamp) {
-                            console.log("tata")
-                            upcomingBookings.push({ ...booking, allowRatings: false });
-                        } else {
-                            const targetArray = isUser ? historyBookings : (isArtist ? historyBookings : null);
-                            if (targetArray) {
-                                targetArray.push({ ...booking, allowRatings: isUser, completed: true });
-                            }
-                        }
-                    } else if (masterBookingDetails.status === 'refunded') {
-                        historyBookings.push({ ...booking, allowRatings: false });
-                    }
-                }
-    
-                // Update state with categorized bookings
-                setBookingsState({
-                    outgoing: outgoingBookings,
-                    incoming: incomingBookings,
-                    upcoming: upcomingBookings,
-                    history: historyBookings,
-                });
-            }
-        } catch (err) {
-            console.error("Failed to fetch data:", err);
-            // Handle error
-        }
-        setLoading(false);
-    }, [navigate, props]);
-     // Only include actual dependencies
-     useEffect(() => {
-        console.log("Updated bookingsList:", bookingsList); 
-        console.log("Updated bookingsstate:", bookingsState);// This will log the updated state whenever it changes.
-    }, [bookingsList,bookingsState]);
-
-
-    const fetchBookings =  useCallback( async(userId) => {
-        try {
-            const resp = await BookingService.getAllBookings()
+            const resp = await BookingService.get_all_detailed_enquiries()
             if (resp.status === 200){
 
-                console.log(resp)
-
-                // drop the draft bookings
-                let bookings = resp.data?.filter(booking => booking.status !== "draft")
-
-                // for each booking, append the enquiry to the booking 
-                let bookingsWithEnquiry = []
                 
-                for (let booking of bookings) {
-                    try{
-                        // if draft or cancelled, don't get the artist
-                        if (booking.status === "draft" || booking.status === "cancelled_by_user"){
-                            continue
-                        }
-                        
-                        const resp = await BookingService.getEnquiryForBooking(booking.active_enquiry, booking.id)
-                        if (resp.status === 200){
-                            bookingsWithEnquiry.push({
-                                ...booking,
-                                enquiry: resp.data
-                            })
-                            booking.enquiry = resp.data
-                        }
-                    }
-                    catch(err) { 
-                        console.log("error getting enquiry: ", err)
-                    }
-                }
-             
 
-                let bookingsWithArtist = []
+                
 
-                for (let booking of bookingsWithEnquiry){
-                    try{
+                
 
-                        // if draft or cancelled, don't get the artist
-                        if (booking.status === "draft" || booking.status === "cancelled_by_user"){
-                            continue
-                        }
-
-                        let resp = await UserService.getLinkpageById(booking.artist)
-                        
-                        
-                        if (resp.status === 200){
-                            let artistData = {
-                                pageImage: resp.data.profilePicture,
-                                description: resp.data.description,
-                                user: resp.data.user,
-                                average_rating: resp.data.average_rating,
-                            }
-                            bookingsWithArtist.push({
-                                ...booking,
-                                artistState: artistData,
-                            })
-
-                        }
-                    }
-                    catch (err) {
-                        console.log("error getting artist: ", err)
-                    }
-                }
-
-                let bookingsWithRatings = []
+                // catagorise the bookings into the different catorgories
+                // outgoing, incoming, upcoming, history
+                const bookingsWithoutRatings = resp.data;
+                const outgoingBookings = []
+                const incomingBookings = []
+                const upcomingBookings = []
+                const historyBookings = []
+                const bookingsWithRatings = []
                 let rated = []
+               
 
-                try{
-                    const resp = await UserService.getAllRatings();
-                    if (resp.status === 200){
-                        rated = resp.data
-                    }
-                }
-                catch(err){
-                    console.log("error getting ratings: ", err)
-                }
-
-                // for each booking, if the artist is rated set the user rating else set to undefined
-                for (let booking of bookingsWithArtist){
+                for (let booking of bookingsWithoutRatings){
                     let userRating = undefined
                     for (let rating of rated){
                         if (rating.booking === booking.id ){
@@ -220,24 +73,12 @@ const BookingsController = (props) => {
                         })
                     }
                 }
-
-
-
+                const filteredBookings = bookingsWithRatings.filter(booking => booking.status !== "cancelled_by_user" && booking.status !== "draft");
+              
                 
 
-                // catagorise the bookings into the different catorgories
-                // outgoing, incoming, upcoming, history
-                const outgoingBookings = []
-                const incomingBookings = []
-                const upcomingBookings = []
-                const historyBookings = []
-                console.log("bookingsWithRatings")
-                console.log(JSON.stringify(bookingsWithRatings[0]))
-                console.log(bookingsList)
-
-                
-
-                await bookingsWithRatings.forEach( booking => {
+                await filteredBookings.forEach( booking => {
+                    
                     let currentTimestamp = new Date()
                     // convert the start and end dates to date objects
                     let start_datetime = new Date(booking.enquiry.start_datetime)
@@ -248,12 +89,14 @@ const BookingsController = (props) => {
                         // if the date is in the future 
                         if (start_datetime  > currentTimestamp){
                             if (booking.artist === userId){
+                               
                                 incomingBookings.push({...booking,
                                     allowRatings: false
                                 })
                                     
                             }
                             if (booking.user === userId){
+                                
                                 outgoingBookings.push({...booking,
                                     allowRatings: false
                                 })
@@ -263,6 +106,7 @@ const BookingsController = (props) => {
                     else if (booking.status === "rejected_by_artist"){
                         // if rejected by artist, then only show to user
                         if (booking.user === userId){
+                            
                             outgoingBookings.push({...booking,
                                 allowRatings: false
                             })
@@ -273,11 +117,13 @@ const BookingsController = (props) => {
                     }
                     else if (booking.status === "pending_payment"){
                         if (booking.artist === userId){
+                           
                             incomingBookings.push({...booking,
                                 allowRatings: false
                             })
                         }
                         if (booking.user === userId){
+                            
                             outgoingBookings.push({...booking,
                                 allowRatings: false
                             })
@@ -286,6 +132,7 @@ const BookingsController = (props) => {
                     else if (booking.status === "paid"){
                         // if the date is in the future then add to upcoming, else if the end date is in the past then add to history
                         if (end_datetime > currentTimestamp){
+                            
                             upcomingBookings.push({...booking,
                                 allowRatings: false
                             })
@@ -293,6 +140,7 @@ const BookingsController = (props) => {
                         else {
                             // if outgoing allow them to rate the artist
                             if (booking.user === userId){
+                               
                                 historyBookings.push({...booking,
                                     allowRatings: true,
                                     completed: true
@@ -300,6 +148,7 @@ const BookingsController = (props) => {
                             } 
                             // else just display 
                             else if (booking.artist === userId){
+                               
                                 historyBookings.push({...booking,
                                     allowRatings: false,
                                     completed: true
@@ -308,20 +157,23 @@ const BookingsController = (props) => {
                         }
                     }
                     else if (booking.status === "refunded"){
+                        
                         // add to history
                         historyBookings.push({...booking,
                             allowRatings: false,
                         })
-                    }
+                    } 
                 })
 
+              
 
-                await setBookingsState2({
+                await setBookingsState({
                     outgoing: outgoingBookings,
                     incoming: incomingBookings,
                     upcoming: upcomingBookings,
                     history: historyBookings,
                 })
+            
             }
         } catch(err){
             // if 401 then redirect to home page
@@ -334,7 +186,12 @@ const BookingsController = (props) => {
         }
     },  [navigate])
 
-    const fetchData = useCallback( async () => {
+
+    
+
+    
+
+    const fetchallData = useCallback( async () => {
 
         
         setLoading(true)
@@ -354,7 +211,7 @@ const BookingsController = (props) => {
                 setUserState({
                     ...resp.data?.user,
                 })
-                await fetchBookings(resp.data?.user.id)
+                await fetchAllBookings(resp.data?.user.id)
                 
             }
         }catch(err){
@@ -362,16 +219,18 @@ const BookingsController = (props) => {
         }
         setLoading(false)
  
-    }, [ navigate, setSearchParams, fetchBookings, props])
+    }, [ navigate, setSearchParams, fetchAllBookings, props])
 
     React.useEffect(() => {
-        fetchData()
-        fetchAllData()
-    }, [fetchData, fetchAllData])
+       
+      
+        fetchallData()
+    }, [ fetchallData])
 
     const onAction = () => {
-        fetchData();
-        fetchAllData();
+        
+      
+        fetchallData();
     }
 
     return (
@@ -382,7 +241,7 @@ const BookingsController = (props) => {
             searchPage={searchParams.get("page")}
 
             userState={userState}
-            bookingsState={bookingsState2}
+            bookingsState={bookingsState}
             loading={loading}
             onAction={onAction}
 
