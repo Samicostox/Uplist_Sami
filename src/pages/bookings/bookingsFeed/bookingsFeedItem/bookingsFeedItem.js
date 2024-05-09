@@ -11,6 +11,7 @@ const BookingsFeedItem = (props) => {
   console.log(props.booking?.artistState?.pageImage)
   console.log(props.booking?.artistState?.description)
   const renderProfileImage = (pageImage) => {
+ 
     if (pageImage) {
       return (
         <img src={pageImage} alt="profile" className={style.heading_image} />
@@ -356,10 +357,11 @@ const BookingsFeedItem = (props) => {
 
         <div className={style.container}>
           <div className={style.image_contaienr}>
+
+           
           
             <NavLink
-              to={"/biolink/" + props.booking?.artistState?.user?.username}
-            >
+              to={"/biolink/" + props.booking?.artistState?.user?.username}>
               {renderProfileImage(props.booking?.artistState?.pageImage)}
             </NavLink>
           </div>

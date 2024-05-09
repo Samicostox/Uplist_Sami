@@ -25,6 +25,8 @@ import ResetPassword from "./pages/auth/ResetPassword/resetPassword";
 import Example from "./pages/sami-hugo/landing";
 import Auth2 from "./pages/auth/auth2";
 import GrayRectangle from "./components/biolinkFeedItem/biolinkFeedItem2";
+import BookingsFeedItem from "./pages/bookings/bookingsFeed/bookingsFeedItem/bookingsFeedItem";
+import BookingsFeedItem2 from "./pages/bookings/bookingsFeed/bookingsFeedItem/bookingsFeedItem2";
 
 
 function App() {
@@ -210,6 +212,15 @@ function App() {
                       errorCallback={recievedErrorCallback}
                       successCallback={recievedSuccessCallback}
                       loadCallback={recievedLoadCallback}
+                    />
+                  }
+                />
+
+                  <Route
+                  path="/bookingfeedtest"
+                  element={
+                    <BookingsFeedItem2
+                 
                     />
                   }
                 />
