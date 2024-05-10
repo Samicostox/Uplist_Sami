@@ -16,7 +16,7 @@ const Toggle = () => {
 
 const SliderToggle = ({ selected, setSelected }) => {
   return (
-    <div className="relative flex w-fit items-center rounded-full">
+    <div className="relative flex w-fit items-center rounded-md">
       <button
         className={`${TOGGLE_CLASSES} ${
           selected === "light" ? "text-white" : "text-slate-300"
@@ -47,7 +47,7 @@ const SliderToggle = ({ selected, setSelected }) => {
         <motion.span
           layout
           transition={{ type: "spring", damping: 15, stiffness: 250 }}
-          className="h-full w-1/2 rounded-full bg-gradient-to-r from-violet-600 to-indigo-600"
+          className="h-full w-1/2 rounded-lg bg-gradient-to-r from-violet-600 to-indigo-600"
         />
       </div>
     </div>

@@ -207,7 +207,7 @@ function Profile(props) {
     }
 
     return blocks.map((block) => (
-      <div className=" w-full bg-[var(--overlay-3)] max-w-[490px] rounded-lg border-2 border-[var(--overlay-3)] block">
+      <div className="w-full bg-[var(--overlay-3)] max-w-[490px] rounded-lg border-2 border-[var(--overlay-3)] block">
         <div className="">{block}</div>
       </div>
     ));
