@@ -18,8 +18,10 @@ const SearchBar = (props) => {
  
 
     return (
+
+        <div className='px-4 sm:px-10'>
         
-        <form class="max-w-6xl mx-auto mt-32" onSubmit={handleSearchSubmit}>   
+        <form class="max-w-6xl mx-auto mt-32 " onSubmit={handleSearchSubmit}>   
             <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
             <div class="relative">
                 <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -32,6 +34,7 @@ const SearchBar = (props) => {
             </div>
             <Dropdown onChange={props.onChange}></Dropdown>
         </form>
+        </div>
         
     );
 }
