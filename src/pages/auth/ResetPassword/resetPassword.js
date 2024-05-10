@@ -39,31 +39,40 @@ const ResetPassword2 = (props) => {
     const [timer , setTimer] = useState(60);
 
 
-    const handleSubmit =  async(e) => {
-        e.preventDefault();
-        if (buttonLock) return;
-        setButtonLock(true);
-
-        try {
-            let resp = await AuthService.forgotPassword(formInput.email);
-            if (resp.status === 200) {
-                setButtonLock(false);
-                setTimer(60);
-                setScreen(2);
-                return true;
-            }
-        } catch (err) {
-            if (err.response.status === 404) {
-                props.errorCallback("Email not found");
-            }
-            else {
-                props.errorCallback("Something went wrong, please try again later");
-            }
-            return false;
-        }
-        setButtonLock(false);
-    }
-
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      if (buttonLock) return;
+      setButtonLock(true);
+      let resp;  // Declare 'resp' outside the try block to increase its scope
+  
+      try {
+          resp = await AuthService.forgotPassword(formInput.email); // Assign response here
+          if (resp.status === 200) {
+              // Successful email submission logic
+              setScreen(2);
+              setTimer(60); // Reset and start the timer
+              props.successCallback(resp.data|| "Something went wrong, please try again later");
+              const intervalId = setInterval(() => {
+                  setTimer((prevTimer) => {
+                      if (prevTimer <= 1) {
+                          clearInterval(intervalId);
+                          setButtonLock(false);
+                          return 0;
+                      }
+                      return prevTimer - 1;
+                  });
+              }, 1000);
+          } else {
+              throw new Error('Failed to send email');
+          }
+      } catch (err) {
+          console.error("Error during email submission: ", err);
+          props.errorCallback(err.response?.data|| "Something went wrong, please try again later");
+      } finally {
+          // Ensure button is unlocked in case of network issues or non-404 errors
+          setButtonLock(false);
+      }
+  }
     const chooseEmailScreen = () => {
 
         const handleEmailChange = (e) => {

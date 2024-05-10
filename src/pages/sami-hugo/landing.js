@@ -25,7 +25,7 @@ function Example() {
   });
 
   return (
-    <div>
+    <div className="overflow-x-hidden">
       <Hero />
       <Embeds />
       <Creatives />
