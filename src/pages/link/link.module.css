@@ -110,7 +110,7 @@
     font-weight: medium;
 }
 
-.profileDataBoxHeading.edit {
+.profileDataBoxHeading .edit {
     display: inline;
     font-size: 2rem;
 }
@@ -133,6 +133,7 @@
     text-align: left;
     overflow: hidden;
     text-overflow: ellipsis;
+    word-break: normal;
 }
 .profileDataBoxSubheading.edit {
     display: inline;

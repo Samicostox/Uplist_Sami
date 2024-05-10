@@ -7,6 +7,7 @@ import GetImageFile from "../../../components/getImageFile/getImageFile";
 import SaveBanner from "../../../components/saveBanner/saveBanner";
 import EditModule from "./update-component/editModule";
 import { FaLink, FaPlusCircle } from "react-icons/fa";
+import Toggle from "./toggle_dark_mode";
 
 function Edit(props) {
   const renderProfileImage = () => {
@@ -201,17 +202,17 @@ function Edit(props) {
 
   const editProfileDataBox = (heading, subheading, socialMediaIconLinks) => {
     return (
-      <div className={style.profileDataBox}>
-        <div className={formStyle.profileDataBoxForm}>
+      <div class="w-full max-w-2xl h-80 bg-[var(--overlay-3)] border-2 border-[var(--overlay-3)] rounded-lg p-6 mx-auto flex flex-col justify-start overflow-hidden">
+        <div className="grid-col-1 font-size-20">
           <form onSubmit={props.handleSave}>
-            <div className={style.profileDataBoxHeading + " " + style.edit}>
-              <label htmlFor="heading" className={formStyle.headingLabel}>
-                Header:{" "}
-              </label>
-              {edit_heading ? (
-                <>
+            <div class="max-w-sm space-y-3">
+              <div>
+                <label class="block text-2xl font-medium mb-2 dark:text-white">
+                  Name
+                </label>
+                <div class="relative">
                   <input
-                    className={formStyle.form}
+                    class="py-3 px-4 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
                     type="text"
                     id="heading"
                     name="heading"
@@ -224,28 +225,17 @@ function Edit(props) {
                     autoFocus
                     onKeyDown={(e) => handleKeyPress(e)}
                   ></input>
-                </>
-              ) : (
-                <div
-                  className={formStyle.edit_text_text}
-                  onClick={() => setEditHeading(true)}
-                >
-                  <div className={formStyle.heading}>{props.form.heading}</div>
-                  {/* <div className={formStyle.edit_icon_container} onClick = {() => setEditHeading(true)}>
-                                <img src = {"/pictures/edit/pencil.svg"} className={formStyle.edit_icon_header} alt = "edit link button"/>
-                                </div> */}
                 </div>
-              )}
+              </div>
             </div>
-
-            <div className={style.profileDataBoxSubheading + " " + style.edit}>
-              <label htmlFor="subheading" className={formStyle.subheadingLabel}>
-                Bio:{" "}
-              </label>
-              {edit_subheading ? (
-                <>
+            <div class="max-w-sm space-y-3">
+              <div>
+                <label class="block text-2xl font-medium mb-2 dark:text-white">
+                  Description
+                </label>
+                <div class="relative">
                   <input
-                    className={formStyle.form}
+                    class="py-3 px-4  block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
                     type="text"
                     id="subheading"
                     name="subheading"
@@ -258,20 +248,8 @@ function Edit(props) {
                     autoFocus
                     onKeyDown={(e) => handleKeyPress(e)}
                   ></input>
-                </>
-              ) : (
-                <div
-                  className={formStyle.edit_text_text}
-                  onClick={() => setEditSubheading(true)}
-                >
-                  <div className={formStyle.subheading}>
-                    {props.form.subheading}
-                  </div>
-                  {/* <div className={formStyle.edit_icon_container} onClick = {() => setEditSubheading(true)}>
-                                <img src = {"/pictures/edit/pencil.svg"} className={formStyle.edit_icon_header} alt = "edit link button"/>
-                                </div> */}
                 </div>
-              )}
+              </div>
             </div>
           </form>
         </div>
@@ -323,21 +301,7 @@ function Edit(props) {
   };
 
   const editThemeBlock = () => {
-    return (
-      <div className={formStyle.toggle_theme_wrapper}>
-        <span>☀️</span>
-        <label className={formStyle.toggle_theme} htmlFor="checkbox">
-          <input
-            type="checkbox"
-            id="checkbox"
-            onChange={props.toggleTheme}
-            checked={props.theme === "dark"}
-          />
-          <div className={formStyle.slider + " " + formStyle.round}></div>
-        </label>
-        <span>🌒</span>
-      </div>
-    );
+    return <Toggle />;
   };
 
   const [renderAddComponent, setRenderAddComponent] = useState(false);
@@ -355,7 +319,7 @@ function Edit(props) {
   const onGetImageFileClose = () => setShowGetImageFile(false);
 
   return (
-    <div className={style.profile}>
+    <div className="pt-20">
       {!props.loading && (
         <div className={style.profile_content}>
           <SaveBanner saveCallback={props.handleSave} state={props.saveState} />
