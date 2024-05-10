@@ -1,3 +1,21 @@
+/*
+  This example requires some changes to your config:
+  
+  ```
+  // tailwind.config.js
+  module.exports = {
+    // ...
+    plugins: [
+      // ...
+      require('@tailwindcss/forms'),
+    ],
+  }
+  ```
+  *
+
+
+*/
+
 import React from 'react';
 import style from './auth.module.css';
 import { useState } from 'react';
@@ -7,19 +25,18 @@ import { useNavigate } from 'react-router-dom';
 import TokenService from '../../request-model/services/token.service';
 import { useEffect } from 'react';
 
-
 const initialValues = {
     username: "",
     password: "",
 };
 
-function Auth(props) {
 
-  
+export default function Auth2(props) {
 
-  const [formInput, setformInput] = useState(initialValues);
+    const [formInput, setformInput] = useState(initialValues);
   const [buttonLock, setButtonLock] = useState(false);
   const [showForgotPasswordLink, setShowForgotPasswordLink] = useState(false);
+  const test = "test"
 
 
 
@@ -83,84 +100,112 @@ function Auth(props) {
     }
     setButtonLock(false);
   }
-
-  const renderLoginform = () => { 
-  
+   
     return (
-      <div className={style.form}> 
-        <div className={style.form_title}>
-          Login to Your Account
-        </div>
-
-        <div className={style.form_subtitle}>
-        Login to your uplist account to get started
-        </div>
-        <form onSubmit={handleSubmitform}>
-
-          <div className={style.form_label}>
-            USERNAME / EMAIL ADDRESS
+      <>
+        {/*
+          This example requires updating your template:
+  
+          ```
+          <html class="h-full bg-gray-50">
+          <body class="h-full">
+          ```
+        */}
+       
+       <div className="flex min-h-screen items-center justify-center bg-gray-100 py-12 px-6 lg:px-8 flex-col" >
+    <div className="sm:mx-auto sm:w-full sm:max-w-md">
+            <img
+              className="mx-auto h-32 w-auto "
+              src="https://res.cloudinary.com/dl2adjye7/image/upload/v1715330543/UPlist_1_jiu2cp.png"
+              alt="Your Company"
+            />
+            <h2 className="mt-6 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+              Sign in to your account
+            </h2>
           </div>
-
-          <input 
-                        className = {style.textbox}
-                        type="text"
-                        id = "username"
-                        name = "username"
-                        value = {formInput.username}
-                        onChange = {handleUsernameChange}
-                        placeholder = "Username">
-
-          </input>
-
-
-          <div className={style.form_label}>
-            PASSWORD 
-          </div>
-
-          <input 
-                      className = {style.textbox}
+  
+          <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-md">
+      <div className="bg-white px-6 py-12 shadow-lg rounded-lg sm:px-10">
+              <form onSubmit={handleSubmitform} className="space-y-6" action="#" method="POST">
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900 text-left">
+                    Username
+                  </label>
+                  <div className="mt-2">
+                    <input
+                      type="text"
+                      id = "username"
+                      name = "username"
+                      autoComplete="username"
+                      placeholder = "Username"
+                      required
+                      value = {formInput.username}
+                      onChange = {handleUsernameChange}
+                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    />
+                  </div>
+                </div>
+  
+                <div>
+                  <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900 text-left">
+                    Password
+                  </label>
+                  <div className="mt-2">
+                    <input
                       type="password"
                       id = "password"
                       name = "password"
                       value = {formInput.password}
                       onChange = {handlePasswordChange}
-                      placeholder = "Password">
-
-          </input>
-
-          <div  className = {style.continue_button_container}>
-            <button className = {style.continue_button} type='submit'>
-              Continue
-            </button>
+                      placeholder = "Password"
+                      autoComplete="current-password"
+                      required
+                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    />
+                  </div>
+                </div>
+  
+                <div className="flex items-center justify-between ">
+                  <div className="flex items-center">
+                    <input
+                      id="remember-me"
+                      name="remember-me"
+                      type="checkbox"
+                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                    />
+                    <label htmlFor="remember-me" className="ml-3 block text-sm leading-6 text-gray-900">
+                      Remember me
+                    </label>
+                  </div>
+  
+                  <div className="text-sm leading-6">
+                    <a href="forgot-password" className="font-semibold text-indigo-600 hover:text-indigo-500">
+                      Forgot password?
+                    </a>
+                  </div>
+                </div>
+  
+                <div>
+                  <button
+                    type="submit"
+                    className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  >
+                    Sign in
+                  </button>
+                </div>
+              </form>
+  
+            </div>
+  
+            <p className="mt-10 text-center text-sm text-gray-500">
+              Not a member?{' '}
+              <a href="/auth/sign-up" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+                Sign Up for Free!
+              </a>
+            </p>
           </div>
-        </form>
-
-      
-
-    
-
-      <NavLink className={style.link} to = "/auth/sign-up">
-        Dont have an account? <span className={style.link_red} > Sign up here </span>
-      </NavLink>
-
-      <br />
-      {showForgotPasswordLink &&
-        <NavLink className={style.link} to = "/auth/forgot-password">
-          Forgot your password? <span className={style.link_red} > Reset it here </span>
-        </NavLink>
-      }
-    </div>
-      
+        </div>
+      </>
     )
   }
-
   
-
-  return (
-    <div className={style.auth}>
-        {renderLoginform()}
-    </div>
-  )
-}
-
-export default Auth;

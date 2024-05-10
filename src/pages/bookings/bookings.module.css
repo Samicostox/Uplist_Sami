@@ -17,6 +17,7 @@
     /* background-color: red; */
     width:1350px;
     margin : 0 auto;
+    padding-top: 150px;
 }
 .bookings_container_grid {
     width: 100%;

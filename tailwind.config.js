@@ -5,6 +5,7 @@ module.exports = {
   ],
   theme: {
     extend: {
+      wordBreak: ['break-all'],
       fontFamily: {
         inter: ["var(--font-inter)", "sans-serif"],
         hkgrotesk: ["var(--font-hkgrotesk)", "sans-serif"],

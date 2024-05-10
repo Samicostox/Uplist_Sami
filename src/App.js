@@ -23,10 +23,12 @@ import TermsAndConditions from "./pages/terms/termsAndConditions";
 import CookiesBanner from "./components/cookies/cookies";
 import ResetPassword from "./pages/auth/ResetPassword/resetPassword";
 import Example from "./pages/sami-hugo/landing";
-import Auth2 from "./pages/auth/auth2";
+import Auth2 from "./pages/auth/auth";
 import GrayRectangle from "./components/biolinkFeedItem/biolinkFeedItem2";
 import BookingsFeedItem from "./pages/bookings/bookingsFeed/bookingsFeedItem/bookingsFeedItem";
 import BookingsFeedItem2 from "./pages/bookings/bookingsFeed/bookingsFeedItem/bookingsFeedItem2";
+import ResetPassword2 from "./pages/auth/ResetPassword/resetPassword";
+import SignUp2 from "./pages/auth/sign-up/signUp";
 
 
 function App() {
@@ -92,7 +94,7 @@ function App() {
                 <Route path="/biolink" element={<Landing />} />
 
                 <Route
-                  path="/auth/login"
+                  path="/auth/login2"
                   element={
                     <Auth
                       errorCallback={recievedErrorCallback}
@@ -101,7 +103,7 @@ function App() {
                   }
                 />
                 <Route
-                  path="/auth/login2"
+                  path="/auth/login"
                   element={
                     <Auth2
                       errorCallback={recievedErrorCallback}
@@ -122,12 +124,22 @@ function App() {
                 <Route
                   path="/auth/forgot-password"
                   element={
+                    <ResetPassword2
+                      errorCallback={recievedErrorCallback}
+                      successCallback={recievedSuccessCallback}
+                    />
+                  }
+                />
+                 <Route
+                  path="/auth/forgot-password2"
+                  element={
                     <ResetPassword
                       errorCallback={recievedErrorCallback}
                       successCallback={recievedSuccessCallback}
                     />
                   }
                 />
+
 
                 <Route
                   path="/auth/sign-up/:query"
@@ -143,6 +155,16 @@ function App() {
                   path="/auth/sign-up"
                   element={
                     <SignUp
+                      errorCallback={recievedErrorCallback}
+                      successCallback={recievedSuccessCallback}
+                    />
+                  }
+                />
+
+<Route
+                  path="/auth/sign-up2"
+                  element={
+                    <SignUp2
                       errorCallback={recievedErrorCallback}
                       successCallback={recievedSuccessCallback}
                     />
