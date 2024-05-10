@@ -7,7 +7,7 @@ import style from "./link.module.css";
 import { getWebsiteLogo } from "./websiteLogos";
 import UserService from "../../request-model/services/user.service";
 import EditBanner from "./edit/edit-banner/editBanner";
-import shadergradient from "./shadergradient2.gif";
+import shadergradient from "./shadergradient4.gif";
 import background from "./background.gif";
 
 function Profile(props) {
@@ -76,7 +76,7 @@ function Profile(props) {
           </span>
         </div>
 
-        <div className="w-full max-h-20 mt-5 pb-2 pr-14 font-medium text-gray-800 text-xl text-left  text-ellipsis">
+        <div className="w-full max-h-20 mt-5 pb-2 md:pr-14 font-medium text-gray-800 text-xl text-left  text-ellipsis">
           {subheading}
         </div>
 
