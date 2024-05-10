@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { FiMoon, FiSun } from "react-icons/fi";
+import { FiUser , FiMic } from "react-icons/fi";
 
 const TOGGLE_CLASSES =
   "text-sm font-medium flex items-center gap-2 px-3 md:pl-3 md:pr-3.5 py-3 md:py-1.5 transition-colors relative z-10";
@@ -26,7 +26,7 @@ export const SliderToggle = ({ selected, setSelected }) => {
           setSelected("users");
         }}
       >
-        <FiMoon className="relative z-10 text-lg md:text-sm" />
+        <FiUser className="relative z-10 text-lg md:text-sm" />
         <span className="relative z-10">Users</span>
       </button>
       <button
@@ -37,7 +37,7 @@ export const SliderToggle = ({ selected, setSelected }) => {
           setSelected("artist");
         }}
       >
-        <FiSun className="relative z-10 text-lg md:text-sm" />
+        <FiMic className="relative z-10 text-lg md:text-sm" />
         <span className="relative z-10">Artist</span>
       </button>
       <div
