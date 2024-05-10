@@ -27,6 +27,7 @@ import Auth2 from "./pages/auth/auth2";
 import GrayRectangle from "./components/biolinkFeedItem/biolinkFeedItem2";
 import BookingsFeedItem from "./pages/bookings/bookingsFeed/bookingsFeedItem/bookingsFeedItem";
 import BookingsFeedItem2 from "./pages/bookings/bookingsFeed/bookingsFeedItem/bookingsFeedItem2";
+import ResetPassword2 from "./pages/auth/ResetPassword/resetPassword2";
 
 
 function App() {
@@ -92,7 +93,7 @@ function App() {
                 <Route path="/biolink" element={<Landing />} />
 
                 <Route
-                  path="/auth/login"
+                  path="/auth/login2"
                   element={
                     <Auth
                       errorCallback={recievedErrorCallback}
@@ -101,7 +102,7 @@ function App() {
                   }
                 />
                 <Route
-                  path="/auth/login2"
+                  path="/auth/login"
                   element={
                     <Auth2
                       errorCallback={recievedErrorCallback}
@@ -128,6 +129,16 @@ function App() {
                     />
                   }
                 />
+                 <Route
+                  path="/auth/forgot-password2"
+                  element={
+                    <ResetPassword2
+                      errorCallback={recievedErrorCallback}
+                      successCallback={recievedSuccessCallback}
+                    />
+                  }
+                />
+
 
                 <Route
                   path="/auth/sign-up/:query"
