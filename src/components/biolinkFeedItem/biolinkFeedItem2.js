@@ -53,7 +53,7 @@ const BiolinkFeedItem2 = (props) => {
       }
   return (
 
-    <div className="px-4 sm:px-10">
+    <div className="px-4 sm:px-10 mb-10">
     <NavLink to={`/biolink/${state.username}`}>
     
       <div className="flex max-w-6xl mx-auto p-3 bg-white border border-gray-200 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700 relative mt-3">

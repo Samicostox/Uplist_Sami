@@ -175,7 +175,7 @@ const Bookings = (props) => {
         
 
         return (
-            <div className='max-w-md md:max-w-3xl lg:max-w-4xl '>
+            <div className='max-w-md sm:max-w-xl  md:max-w-3xl lg:max-w-4xl pr-12 '>
             <div className={style.bookings_feed_container}>
                 {feedItems.length > 0 ? (
                     feedItems.map((booking, index) => {
