@@ -6,7 +6,7 @@ import AddModule from "./add-component/addModule";
 import GetImageFile from "../../../components/getImageFile/getImageFile";
 import SaveBanner from "../../../components/saveBanner/saveBanner";
 import EditModule from "./update-component/editModule";
-import { FaLink, FaPlusCircle } from "react-icons/fa";
+import { FaLink, FaPlusCircle, faPencil } from "react-icons/fa";
 import link from "./link.svg";
 import Toggle from "./toggle_dark_mode";
 import uplist from "./logo-uplist.png";
@@ -96,20 +96,34 @@ function Edit(props) {
                 )}
 
                 <div
-                  className="w-full  hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)] transition duration-200 max-w-[490px] bg-white mb-5 shadow-md pl-2 py-2 text-xl flex items-center justify-start rounded-md border-2 border-[var(--overlay-3)] cursor-pointer"
+                  className="w-full hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)] transition duration-200 max-w-[490px] bg-white mb-5 shadow-md pl-2 py-2 text-xl flex items-center justify-between rounded-md border-2 border-[var(--overlay-3)] cursor-pointer"
                   onClick={() => props.setEditLink(link.id)}
                   key={link.id}
                   data-testid="edit-link"
                 >
                   {/* {" "} link indec: {link.index} link id: {link.id} */}
-                  <div className="text-gray-400">
+                  <div className="flex items-center">
                     <img
                       src={logo[type]}
                       alt="profile"
                       className="h-12 mr-2 rounded-md bg-[var(--overlay-2)]"
                     />
+                    <div className="text-gray-700">{link.content}</div>
                   </div>
-                  {link.content}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-6 h-6 mr-3"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125"
+                    />
+                  </svg>
                 </div>
               </>
             )
@@ -152,16 +166,32 @@ function Edit(props) {
             )}
 
             <div
-              className="w-full max-w-[490px] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)] transition duration-200 bg-white shadow-md pl-2 py-2 text-xl flex items-center justify-start rounded-md border-2 border-[var(--overlay-3)] cursor-pointer"
+              className="w-full max-w-[490px] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)] transition duration-200 bg-white shadow-md pl-2 py-2 text-xl flex items-center justify-between rounded-md border-2 border-[var(--overlay-3)] cursor-pointer"
               onClick={() => setEditEmailLists(true)}
             >
-              <img
-                src={mailchimp}
-                alt="profile"
-                className="h-12 mr-2 rounded-md bg-[var(--overlay-2)]"
-              />
-              Email Subscription Lists
-              {/* {" "} link indec: {link.index} link id: {link.id} */}
+              <div className="flex items-center">
+                <img
+                  src={mailchimp}
+                  alt="profile"
+                  className="h-12 mr-2 rounded-md bg-[var(--overlay-2)]"
+                />
+                Email Subscription Lists
+                {/* {" "} link indec: {link.index} link id: {link.id} */}
+              </div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6 mr-3"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125"
+                />
+              </svg>
             </div>
           </>
         )}
@@ -190,15 +220,31 @@ function Edit(props) {
             )}
 
             <div
-              className="w-full max-w-[490px] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)] transition duration-200 bg-white shadow-md pl-2 py-2 text-xl flex items-center justify-start rounded-md border-2 border-[var(--overlay-3)] cursor-pointer"
+              className="w-full max-w-[490px] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)] transition duration-200 bg-white shadow-md pl-2 py-2 text-xl flex items-center justify-between rounded-md border-2 border-[var(--overlay-3)] cursor-pointer"
               onClick={() => setEditBookingModule(true)}
             >
-              <img
-                src={uplist}
-                alt="profile"
-                className="h-12 mr-4 rounded-md bg-[var(--overlay-2)]"
-              />
-              Manage Booking Feature
+              <div className="flex items-center">
+                <img
+                  src={uplist}
+                  alt="profile"
+                  className="h-12 mr-4 rounded-md bg-[var(--overlay-2)]"
+                />
+                Manage Booking Feature
+              </div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6 mr-3"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125"
+                />
+              </svg>
             </div>
           </>
         )}
@@ -336,7 +382,7 @@ function Edit(props) {
               {editProfileDataBox()}
               {editProfileImageBlock()}
             </div>
-            <div className="max-w-[1000px] px-2 pt-4 pb-4 mx-auto grid justify-items-start items-start grid-cols-1 lg:grid-cols-[1fr_1fr] gap-5  box-content">
+            <div className="max-w-[1000px] px-2 pt-4 mx-auto grid justify-items-start items-start grid-cols-1 gap-5 box-content">
               {renderAddComponent ? (
                 <AddModule
                   onClose={() => setRenderAddComponent(false)}
@@ -356,7 +402,8 @@ function Edit(props) {
                 </button>
               )}
               <h1 className="text-4xl">Your Links</h1>
-
+            </div>
+            <div className="max-w-[1000px] px-2 pt-4 pb-4 mx-auto grid justify-items-start items-start grid-cols-1 lg:grid-cols-[1fr_1fr] gap-5  box-content">
               <div className="w-[490px]">
                 {renderBookingModule("Booking Feature")}
               </div>
