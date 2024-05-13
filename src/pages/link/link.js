@@ -436,16 +436,7 @@ function Profile(props) {
     ? ""
     : style.full;
   return (
-    <div
-      className="pt-20"
-      style={{
-        width: "100%",
-        height: "100%",
-        backgroundImage: `url(${background})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    >
+    <div className="pt-20 bg-gray-100">
       <EditBanner canEdit={props.editable} />
       {!props.pageLoading && (
         <div className={style.profile_content}>
