@@ -12,16 +12,15 @@ const Markeplace = (props) => {
 
   const animatedComponents = makeAnimated();
 
- 
   return (
-    <div >
-     
-       
-
-      <SearchBar onSearch={props.handleSearch} onChange={props.handleMultiSelectChange}></SearchBar>
+    <div>
+      <SearchBar
+        onSearch={props.handleSearch}
+        onChange={props.handleMultiSelectChange}
+      ></SearchBar>
 
       {!props.loading && (
-        <div >
+        <div>
           <MarkeplaceFeed linkpages={props.state.filteredLinkpages} />
         </div>
       )}

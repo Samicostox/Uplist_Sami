@@ -64,7 +64,7 @@ function Profile(props) {
           <div className="text-xl flex text-gray-400 font-mono font-medium pr-5">
             @{props.state.username}
           </div>
-          <span className="inline-flex max-w-20 items-center gap-x-1.5 rounded-md bg-indigo-100 px-2 py-1 text-sm md:text-md font-medium text-indigo-700">
+          <span className="inline-flex max-w-25 items-center gap-x-1.5 rounded-md bg-indigo-100 px-2 py-1 text-sm md:text-md font-medium text-indigo-700">
             <svg
               className="h-1.5 w-1.5 fill-indigo-500"
               viewBox="0 0 6 6"
@@ -103,6 +103,10 @@ function Profile(props) {
           src={headerImage}
           alt="profile"
           className="h-80 rounded-lg shadow-md m-auto bg-[var(--overlay-2)]"
+          onError={(e) => {
+            e.target.src = "/pictures/temp/profile.png"; // Provide a fallback source
+            console.error("Failed to load image at", e.target.src);
+          }}
         />
       );
     } else {
@@ -111,6 +115,10 @@ function Profile(props) {
           src="/pictures/temp/profile.png"
           alt="profile"
           className="h-80 rounded-lg shadow-md m-auto bg-[var(--overlay-2)]"
+          onError={(e) => {
+            e.target.src = "/pictures/temp/profile.png"; // Provide a fallback source
+            console.error("Failed to load image at", e.target.src);
+          }}
         />
       );
     }

@@ -76,7 +76,7 @@ function Edit(props) {
 
     return (
       <div className="">
-        {count > 0 && <h1 className="text-2xl">{title}</h1>}
+        {count > 0 && <h1 className="text-2xl mb-2">{title}</h1>}
         {props.links.map(
           (link, index) =>
             link.type === type && (
