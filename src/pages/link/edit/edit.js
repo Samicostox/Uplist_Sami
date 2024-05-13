@@ -96,7 +96,7 @@ function Edit(props) {
                 )}
 
                 <div
-                  className="w-full max-w-[490px] bg-[var(--overlay-3)] mb-5 shadow-md pl-2 py-2 text-xl flex items-center justify-start rounded-md border-2 border-[var(--overlay-3)] cursor-pointer"
+                  className="w-full  hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)] transition duration-200 max-w-[490px] bg-white mb-5 shadow-md pl-2 py-2 text-xl flex items-center justify-start rounded-md border-2 border-[var(--overlay-3)] cursor-pointer"
                   onClick={() => props.setEditLink(link.id)}
                   key={link.id}
                   data-testid="edit-link"
@@ -152,7 +152,7 @@ function Edit(props) {
             )}
 
             <div
-              className="w-full max-w-[490px] bg-[var(--overlay-3)] shadow-md pl-2 py-2 text-xl flex items-center justify-start rounded-md border-2 border-[var(--overlay-3)] cursor-pointer"
+              className="w-full max-w-[490px] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)] transition duration-200 bg-white shadow-md pl-2 py-2 text-xl flex items-center justify-start rounded-md border-2 border-[var(--overlay-3)] cursor-pointer"
               onClick={() => setEditEmailLists(true)}
             >
               <img
@@ -190,7 +190,7 @@ function Edit(props) {
             )}
 
             <div
-              className="w-full max-w-[490px] bg-[var(--overlay-3)] shadow-md pl-2 py-2 text-xl flex items-center justify-start rounded-md border-2 border-[var(--overlay-3)] cursor-pointer"
+              className="w-full max-w-[490px] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)] transition duration-200 bg-white shadow-md pl-2 py-2 text-xl flex items-center justify-start rounded-md border-2 border-[var(--overlay-3)] cursor-pointer"
               onClick={() => setEditBookingModule(true)}
             >
               <img
@@ -208,7 +208,7 @@ function Edit(props) {
 
   const editProfileDataBox = (heading, subheading, socialMediaIconLinks) => {
     return (
-      <div class="w-full max-w-2xl h-80 bg-[var(--overlay-3)] border-2 border-[var(--overlay-3)] rounded-lg p-6 mx-auto flex flex-col justify-start overflow-hidden">
+      <div class="w-full max-w-2xl h-80 bg-white border-2 border-[var(--overlay-3)] rounded-lg p-6 mx-auto flex flex-col justify-start overflow-hidden">
         <div className="grid-col-1 font-size-20">
           <form onSubmit={props.handleSave}>
             <div class="max-w-sm space-y-3">
@@ -327,7 +327,7 @@ function Edit(props) {
   const onGetImageFileClose = () => setShowGetImageFile(false);
 
   return (
-    <div className="pt-20">
+    <div className="pt-20 bg-gray-100">
       {!props.loading && (
         <div className="">
           <SaveBanner saveCallback={props.handleSave} state={props.saveState} />
@@ -336,7 +336,7 @@ function Edit(props) {
               {editProfileDataBox()}
               {editProfileImageBlock()}
             </div>
-            <div className="w-[1000px] px-2 pt-4 pb-4 mx-auto grid justify-items-start items-start  grid-cols-1  gap-5 box-content">
+            <div className="max-w-[1000px] px-2 pt-4 pb-4 mx-auto grid justify-items-start items-start grid-cols-1 lg:grid-cols-[1fr_1fr] gap-5  box-content">
               {renderAddComponent ? (
                 <AddModule
                   onClose={() => setRenderAddComponent(false)}
@@ -357,25 +357,25 @@ function Edit(props) {
               )}
               <h1 className="text-4xl">Your Links</h1>
 
-              <div className="w-[1000px]">
+              <div className="w-[490px]">
                 {renderBookingModule("Booking Feature")}
               </div>
-              <div className="w-[1000px]">
+              <div className="w-[490px]">
                 {renderEmailLists("Mailing List")}
               </div>
-              <div className="w-[1000px]">
+              <div className="w-[490px]">
                 {renderLinks("link", "Custom Links")}
               </div>
-              <div className="w-[1000px]">
+              <div className="w-[490px]">
                 {renderLinks("spotify", "Spotify Links")}
               </div>
-              <div className="w-[1000px]">
+              <div className="w-[490px]">
                 {renderLinks("soundcloud", "Soundcloud Links")}
               </div>
-              <div className="w-[1000px]">
+              <div className="w-[490px]">
                 {renderLinks("youtube", "Youtube Links")}
               </div>
-              <div className="w-[1000px]">
+              <div className="w-[490px]">
                 {renderLinks("skiddle", "Skiddle Links")}
               </div>
             </div>
