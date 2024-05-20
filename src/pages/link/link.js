@@ -405,37 +405,39 @@ function Profile(props) {
       return <></>;
     }
     return (
-      <div className="max-w-[490px] w-full rounded-lg mx-auto shadow-lg bg-white bg-cover bg-center justify-center items-center text-left text-[var(--white-color)] transition duration-200 ease-in-out">
-        <div className="text-left pt-5 pl-5 pb-2 text-2xl font-medium text-[var(--font-color-1)]">
-          Subscribe to their mailing list!
-        </div>
-        <div className="">
-          <div className="flex justify-center w-full">
-            {!subscribed ? (
-              <>
-                <input
-                  className="w-[70%] h-15 rounded-lg border-2 pl-4 text-lg leading-[60px] -mr-2 font-medium text-black transition duration-200 ease-in-out"
-                  type="email"
-                  placeholder="Email Address"
-                  value={mailingListInput}
-                  onChange={handleMailListEmailChange}
-                />
-                <button
-                  className="px-6 h-10 py-2 bg-blue-500 text-white rounded-r-lg font-bold transform "
-                  onClick={onSubscribe}
-                >
-                  Subscribe
-                </button>
-              </>
-            ) : (
-              <>
-                <div className={style.mailing_list_subscribed}>
-                  Thank you for subscribing!
-                </div>
-              </>
-            )}
-          </div>
-        </div>
+      <div className="max-w-[490px] w-full rounded-lg mx-auto hover:shadow-lg bg-white bg-cover bg-center justify-center items-center text-left text-[var(--white-color)] transition duration-200 ease-in-out">
+        {!subscribed ? (
+          <>
+            <div className="text-left pt-5 pl-5 pb-2 text-2xl font-medium text-[var(--font-color-1)]">
+              Subscribe to their mailing list!
+            </div>
+            <div className="">
+              <div className="flex justify-center w-full mb-5">
+                <>
+                  <input
+                    className="w-[70%] h-15 rounded-lg border-2 pl-4 text-lg leading-[60px] -mr-2 font-medium text-black transition duration-200 ease-in-out"
+                    type="email"
+                    placeholder="Email Address"
+                    value={mailingListInput}
+                    onChange={handleMailListEmailChange}
+                  />
+                  <button
+                    className="px-6 h-10 py-2 bg-blue-500 text-white rounded-r-lg font-bold transform "
+                    onClick={onSubscribe}
+                  >
+                    Subscribe
+                  </button>
+                </>
+              </div>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="text-left pt-5 pl-5 pb-5 text-2xl font-medium text-[var(--font-color-1)]">
+              Thank you for subscribing!
+            </div>
+          </>
+        )}
       </div>
     );
   };
