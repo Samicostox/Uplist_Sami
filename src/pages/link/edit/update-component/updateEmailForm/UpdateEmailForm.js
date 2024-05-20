@@ -69,9 +69,9 @@ function UpdateLinkForm(props) {
       className="z-30 flex justify-center items-center overflow-auto animate-fadeIn"
       data-testid="update-email-list-form"
     >
-      <div className="relative top-[15%] w-[50%] bg-white rounded-lg z-40 p-6 overflow-hidden animate-slideIn md:w-[60%] sm:w-[80%] xs:w-[90%]">
+      <div className="relative top-[15%]  bg-white rounded-lg z-40 p-6 overflow-hidden animate-slideIn md:w-[60%] sm:w-[80%] xs:w-[90%]">
         <div className="text-center mb-6">
-          <h3 className="text-2xl font-medium">
+          <h3 className="text-3xl font-medium">
             Update mailchimp mailing Lists
           </h3>
         </div>
@@ -94,7 +94,7 @@ function UpdateLinkForm(props) {
             </select>
           </div>
 
-          <div className="flex justify-end space-x-4 mt-4">
+          <div className="flex justify-end space-x-2 mt-4">
             <button
               className="bg-black text-white py-2 px-4 rounded transition ease-in-out duration-200 hover:bg-gray-700"
               type="button"

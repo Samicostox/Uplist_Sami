@@ -25,8 +25,14 @@ function EditModule(props) {
   }, [props]);
 
   return (
-    <div className={style.edit_container} data-testid="edit-module">
-      <div ref={wrapperRef} className={style.edit}>
+    <div
+      className="fixed inset-0 bg-black bg-opacity-50 z-30 flex justify-center items-center overflow-auto animate-fadeIn"
+      data-testid="edit-module"
+    >
+      <div
+        ref={wrapperRef}
+        className="add absolute top-[20%] right-[5%] left-[5%] lg:right-[23%] lg:left-[23%] bg-white rounded-[10px] z-40 animate-slideIn p-[20px] pb-[30px] overflow-hidden"
+      >
         <div className={style.edit_form}>
           {props.link.type === "link" && (
             <UpdateLinkForm
