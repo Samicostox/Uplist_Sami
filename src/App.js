@@ -30,7 +30,6 @@ import BookingsFeedItem2 from "./pages/bookings/bookingsFeed/bookingsFeedItem/bo
 import ResetPassword2 from "./pages/auth/ResetPassword/resetPassword";
 import SignUp2 from "./pages/auth/sign-up/signUp";
 
-
 function App() {
   const toasterBannerRef = React.useRef(null);
 
@@ -111,15 +110,7 @@ function App() {
                     />
                   }
                 />
-                <Route
-                  path="/gray"
-                  element={
-                    <GrayRectangle
-                    
-                    />
-                  }
-                />
-
+                <Route path="/gray" element={<GrayRectangle />} />
 
                 <Route
                   path="/auth/forgot-password"
@@ -130,7 +121,7 @@ function App() {
                     />
                   }
                 />
-                 <Route
+                <Route
                   path="/auth/forgot-password2"
                   element={
                     <ResetPassword
@@ -139,7 +130,6 @@ function App() {
                     />
                   }
                 />
-
 
                 <Route
                   path="/auth/sign-up/:query"
@@ -161,7 +151,7 @@ function App() {
                   }
                 />
 
-<Route
+                <Route
                   path="/auth/sign-up2"
                   element={
                     <SignUp2
@@ -208,7 +198,7 @@ function App() {
                     />
                   }
                 />
-                
+
                 <Route
                   path="/account"
                   element={
@@ -238,13 +228,9 @@ function App() {
                   }
                 />
 
-                  <Route
+                <Route
                   path="/bookingfeedtest"
-                  element={
-                    <BookingsFeedItem2
-                 
-                    />
-                  }
+                  element={<BookingsFeedItem2 />}
                 />
 
                 <Route
