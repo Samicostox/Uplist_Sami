@@ -24,7 +24,7 @@ function Edit(props) {
           <img
             src={props.form.headerImage.preview}
             alt="profile"
-            className="h-80 rounded-lg shadow-md m-auto bg-[var(--overlay-2)]"
+            className="h-80 rounded-lg  m-auto bg-[var(--overlay-2)]"
           />
         );
       } else {
@@ -32,7 +32,7 @@ function Edit(props) {
           <img
             src={props.form.headerImage}
             alt="profile"
-            className="h-80 rounded-lg shadow-md m-auto bg-[var(--overlay-2)]"
+            className="h-80 rounded-lg m-auto bg-[var(--overlay-2)]"
           />
         );
       }
@@ -96,7 +96,7 @@ function Edit(props) {
                 )}
 
                 <div
-                  className="w-full hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)] transition duration-200 max-w-[490px] bg-white mb-5 shadow-md pl-2 py-2 text-xl flex items-center justify-between rounded-md border-2 border-[var(--overlay-3)] cursor-pointer"
+                  className="w-full hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)] transition duration-200 max-w-[490px] bg-white mb-5  pl-2 py-2 text-xl flex items-center justify-between rounded-md border-2 border-[var(--overlay-3)] cursor-pointer"
                   onClick={() => props.setEditLink(link.id)}
                   key={link.id}
                   data-testid="edit-link"
@@ -166,7 +166,7 @@ function Edit(props) {
             )}
 
             <div
-              className="w-full max-w-[490px] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)] transition duration-200 bg-white shadow-md pl-2 py-2 text-xl flex items-center justify-between rounded-md border-2 border-[var(--overlay-3)] cursor-pointer"
+              className="w-full max-w-[490px] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)] transition duration-200 bg-white  pl-2 py-2 text-xl flex items-center justify-between rounded-md border-2 border-[var(--overlay-3)] cursor-pointer"
               onClick={() => setEditEmailLists(true)}
             >
               <div className="flex items-center">
@@ -220,7 +220,7 @@ function Edit(props) {
             )}
 
             <div
-              className="w-full max-w-[490px] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)] transition duration-200 bg-white shadow-md pl-2 py-2 text-xl flex items-center justify-between rounded-md border-2 border-[var(--overlay-3)] cursor-pointer"
+              className="w-full max-w-[490px] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)] transition duration-200 bg-white  pl-2 py-2 text-xl flex items-center justify-between rounded-md border-2 border-[var(--overlay-3)] cursor-pointer"
               onClick={() => setEditBookingModule(true)}
             >
               <div className="flex items-center">
@@ -373,7 +373,7 @@ function Edit(props) {
   const onGetImageFileClose = () => setShowGetImageFile(false);
 
   return (
-    <div className="pt-20 bg-gray-100">
+    <div className="pt-20 ">
       {!props.loading && (
         <div className="">
           <SaveBanner saveCallback={props.handleSave} state={props.saveState} />
@@ -396,7 +396,7 @@ function Edit(props) {
               ) : (
                 <button
                   onClick={handleAddContentClicked}
-                  className="px-6 py-2 bg-black text-white rounded-lg font-bold transform hover:-translate-y-1 transition duration-400"
+                  className="px-6 py-2 bg-black text-white rounded-lg font-medium transform hover:-translate-y-1 transition duration-400"
                 >
                   Add Content
                 </button>

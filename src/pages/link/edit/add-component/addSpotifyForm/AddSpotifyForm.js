@@ -70,26 +70,21 @@ function AddSpotifyForm(props) {
   };
 
   return (
-    <div className={style.addModule_container}>
-      <div className={module_form_class}>
-        <div className={style.module_header}>
-          <h3>Add a link to your Spotify music!</h3>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: 14,
-            }}
-          >
-            <FaInfoCircle style={{ marginRight: 10 }} />
-            <p>
+    <div className="flex justify-center items-center">
+      <div className="module_form py-4 w-full max-w-md mx-auto bg-white rounded ">
+        <div className="module_header text-center">
+          <h3 className="text-2xl font-medium pb-2">
+            Add a link to your Spotify music!
+          </h3>
+          <div className="flex flex-row items-center justify-center text-sm">
+            <FaInfoCircle className="mr-2 text-xl text-gray-500" />
+            <p className="text-gray-500">
               Here is how to find the link on&nbsp;
               <a
                 href="https://soundcamps.com/blog/spotify-links-how-to-share-your-music/"
                 target="_blank"
                 rel="noreferrer"
+                className="text-blue-500  hover:text-blue-700"
               >
                 mobile
               </a>
@@ -98,26 +93,27 @@ function AddSpotifyForm(props) {
         </div>
 
         <form>
-          <div className={style.module_form_input}>
-            <label>URL</label>
+          <div className="module_form_input my-4">
+            <label className="block text-lg font-medium">URL</label>
             <input
               type="text"
               name="url"
               value={formInput.url}
               onChange={handleLinkUrlChange}
+              className="w-full  p-2 border border-gray-300 rounded"
             />
           </div>
 
-          <div className={style.module_form_buttons}>
+          <div className="module_form_buttons flex justify-end mt-4">
             <button
-              className={style.module_form_button + " " + style.cancel}
+              className="module_form_button cancel bg-red-500 text-white py-2 px-4 rounded transition ease-in-out duration-200 hover:bg-red-700"
               type="button"
               onClick={props.onClose}
             >
               Cancel
             </button>
             <button
-              className={style.module_form_button + " " + style.save}
+              className="bg-blue-500 text-white py-2 px-4 rounded ml-4 transition ease-in-out duration-200 hover:bg-blue-700"
               type="button"
               onClick={handleSave}
             >

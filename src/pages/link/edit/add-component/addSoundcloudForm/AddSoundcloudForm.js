@@ -70,27 +70,22 @@ function AddSoundcloudForm(props) {
   };
 
   return (
-    <div className={style.addModule_container}>
-      <div className={module_form_class}>
-        <div className={style.module_header}>
-          <h3>Add a link to your Soundcloud music!</h3>
+    <div className="flex justify-center items-center">
+      <div className="module_form py-4 w-full max-w-md mx-auto bg-white rounded">
+        <div className="module_header text-center">
+          <h3 className="text-2xl font-medium pb-2">
+            Add a link to your Soundcloud music!
+          </h3>
 
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: 14,
-            }}
-          >
-            <FaInfoCircle style={{ marginRight: 10, fontSize: 20 }} />
-            <p>
+          <div className="flex flex-row items-start justify-center text-sm">
+            <FaInfoCircle className="mr-2 text-xl text-gray-500" />
+            <p className="text-gray-500">
               Make sure that your account&nbsp;
               <a
                 href="https://help.soundcloud.com/hc/en-us/articles/115003568008-Embedding-a-track-or-playlist-#:~:text=To%20get%20an%20embed%20code,have%20to%20embed%20your%20player."
                 target="_blank"
                 rel="noreferrer"
+                className="text-blue-500  hover:text-blue-700"
               >
                 allows embeds
               </a>
@@ -99,6 +94,7 @@ function AddSoundcloudForm(props) {
                 href="https://help.soundcloud.com/hc/en-us/articles/360054146474-How-can-I-share-music-from-SoundCloud-on-social-media-"
                 target="_blank"
                 rel="noreferrer"
+                className="text-blue-500 hover:text-blue-700"
               >
                 mobile
               </a>
@@ -107,26 +103,27 @@ function AddSoundcloudForm(props) {
         </div>
 
         <form>
-          <div className={style.module_form_input}>
-            <label>URL</label>
+          <div className="module_form_input my-2">
+            <label className="block text-lg font-medium">URL</label>
             <input
               type="text"
               name="url"
               value={formInput.url}
               onChange={handleLinkUrlChange}
+              className="w-full p-2 border border-gray-300 rounded"
             />
           </div>
 
-          <div className={style.module_form_buttons}>
+          <div className="module_form_buttons flex justify-end mt-4">
             <button
-              className={style.module_form_button + " " + style.cancel}
+              className="module_form_button cancel bg-red-500 text-white py-2 px-4 rounded transition ease-in-out duration-200 hover:bg-red-700"
               type="button"
               onClick={props.onClose}
             >
               Cancel
             </button>
             <button
-              className={style.module_form_button + " " + style.save}
+              className="bg-blue-500 text-white py-2 px-4 rounded ml-4 transition ease-in-out duration-200 hover:bg-blue-700"
               type="button"
               onClick={handleSave}
             >

@@ -131,7 +131,7 @@ function Profile(props) {
           href={props.skiddleLinks[0].url}
           target="_blank"
           rel="noreferrer"
-          className="w-full mx-auto hover:shadow-lg max-w-[490px] bg-black no-underline rounded-md hover:shadow-lg  flex flex-col justify-center items-center text-center text-2xl text-[var(--white-color)] font-medium transition duration-200 ease-in-out hover:cursor-pointer"
+          className="w-full mx-auto hover:shadow-xl max-w-[490px] bg-black no-underline rounded-md hover:shadow-lg  flex flex-col justify-center items-center text-center text-2xl text-[var(--white-color)] font-medium transition duration-200 ease-in-out hover:cursor-pointer"
         >
           <div class="relative  max-h-40 mx-auto">
             <img
@@ -161,9 +161,9 @@ function Profile(props) {
     ) {
       return (
         <NavLink to={`/book/${props.state.username}`}>
-          <div class="relative max-w-[490px] hover:shadow-md max-h-40 mx-auto">
+          <div class="relative max-w-[490px] hover:shadow-xl max-h-40 mx-auto">
             <img
-              class=" w-[490px] max-h-40 object-cover rounded-md"
+              class=" w-[490px] max-h-40 object-cover  rounded-md"
               src="/pictures/link/booking.jpeg"
               alt="Booking an event"
             ></img>

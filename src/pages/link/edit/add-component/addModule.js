@@ -50,8 +50,14 @@ function AddModule(props) {
   });
 
   return (
-    <div className={style.add_container} data-testid="add-module">
-      <div ref={wrapperRef} className={style.add}>
+    <div
+      className="fixed inset-0 bg-black bg-opacity-50 z-30 flex justify-center items-center overflow-auto animate-fadeIn"
+      data-testid="add-module"
+    >
+      <div
+        ref={wrapperRef}
+        className="add absolute top-[20%] right-[5%] left-[5%] lg:right-[23%] lg:left-[23%] min-h-[400px] bg-white rounded-[10px] z-40 animate-slideIn p-[20px] pb-[30px] overflow-hidden"
+      >
         <div className={style.add_tabs}>
           <ThemeProvider theme={tabsTheme}>
             <Tabs
