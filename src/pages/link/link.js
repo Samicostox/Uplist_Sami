@@ -46,7 +46,7 @@ function Profile(props) {
 
   const profileDataBox = (heading, subheading, socialMediaIconLinks) => {
     return (
-      <div className="w-full shadow-md h-80 max-w-2xl bg-white  border-[var(--overlay-3)] rounded-lg p-6 box-border m-auto overflow-hidden text-ellipsis break-words flex justify-center flex-col">
+      <div className="w-full hover:shadow-md h-80 max-w-2xl bg-white  border-[var(--overlay-3)] rounded-lg p-6 box-border m-auto overflow-hidden text-ellipsis break-words flex justify-center flex-col">
         <div className="pb-2 font-medium text-5xl text-left w-full overflow-hidden text-ellipsis flex items-center justify-between">
           {heading}
           <button
@@ -95,14 +95,14 @@ function Profile(props) {
   const profileImageBlock = (headerImage) => {
     if (!headerImage) {
       return (
-        <div className="max-h-24 rounded-lg shadow-md m-auto bg-[var(--overlay-2)]"></div>
+        <div className="max-h-24 rounded-lg hover:shadow-md m-auto bg-[var(--overlay-2)]"></div>
       );
     } else if (headerImage) {
       return (
         <img
           src={headerImage}
           alt="profile"
-          className="h-80 rounded-lg shadow-md m-auto bg-[var(--overlay-2)]"
+          className="h-80 rounded-lg hover:shadow-md m-auto bg-[var(--overlay-2)]"
           onError={(e) => {
             e.target.src = "/pictures/temp/profile.png"; // Provide a fallback source
             console.error("Failed to load image at", e.target.src);
@@ -114,7 +114,7 @@ function Profile(props) {
         <img
           src="/pictures/temp/profile.png"
           alt="profile"
-          className="h-80 rounded-lg shadow-md m-auto bg-[var(--overlay-2)]"
+          className="h-80 rounded-lg hover:shadow-md m-auto bg-[var(--overlay-2)]"
           onError={(e) => {
             e.target.src = "/pictures/temp/profile.png"; // Provide a fallback source
             console.error("Failed to load image at", e.target.src);
@@ -131,7 +131,7 @@ function Profile(props) {
           href={props.skiddleLinks[0].url}
           target="_blank"
           rel="noreferrer"
-          className="w-full mx-auto max-w-[490px] bg-black no-underline rounded-md shadow-lg  flex flex-col justify-center items-center text-center text-2xl text-[var(--white-color)] font-medium transition duration-200 ease-in-out hover:cursor-pointer"
+          className="w-full mx-auto hover:shadow-lg max-w-[490px] bg-black no-underline rounded-md hover:shadow-lg  flex flex-col justify-center items-center text-center text-2xl text-[var(--white-color)] font-medium transition duration-200 ease-in-out hover:cursor-pointer"
         >
           <div class="relative  max-h-40 mx-auto">
             <img
@@ -161,7 +161,7 @@ function Profile(props) {
     ) {
       return (
         <NavLink to={`/book/${props.state.username}`}>
-          <div class="relative max-w-[490px] max-h-40 mx-auto">
+          <div class="relative max-w-[490px] hover:shadow-md max-h-40 mx-auto">
             <img
               class=" w-[490px] max-h-40 object-cover rounded-md"
               src="/pictures/link/booking.jpeg"
@@ -215,7 +215,7 @@ function Profile(props) {
     }
 
     return blocks.map((block) => (
-      <div className="w-full bg-[var(--overlay-3)] max-w-[490px] rounded-lg border-2 border-[var(--overlay-3)] block">
+      <div className="w-full bg-[var(--overlay-3)] hover:shadow-lg max-w-[490px] rounded-lg border-2 border-[var(--overlay-3)] block">
         <div className="">{block}</div>
       </div>
     ));
@@ -264,7 +264,7 @@ function Profile(props) {
 
     return blocks.map((block) => (
       <div className="w-full mx-auto max-w-[490px] rounded-lg overflow-hidden">
-        <div className=" rounded-lg shadow-md">{block}</div>
+        <div className=" rounded-lg hover:shadow-md">{block}</div>
       </div>
     ));
   };
@@ -317,7 +317,7 @@ function Profile(props) {
     }
 
     return blocks.map((block) => (
-      <div className="rounded-lg mx-auto max-w-[490px] sm:w-[490px] md:w-[490px] bg-[var(--overlay-3)] shadow-lg ">
+      <div className="rounded-lg mx-auto max-w-[490px] sm:w-[490px] md:w-[490px] bg-[var(--overlay-3)] hover:shadow-lg ">
         {block}
       </div>
     ));
@@ -365,7 +365,7 @@ function Profile(props) {
     }
 
     return blocks.map((block) => (
-      <div className="w-full max-w-[490px] mx-auto overflow-hidden rounded-lg shadow-lg">
+      <div className="w-full max-w-[490px] mx-auto overflow-hidden rounded-lg hover:shadow-lg">
         {block}
       </div>
     ));
@@ -405,7 +405,7 @@ function Profile(props) {
       return <></>;
     }
     return (
-      <div className="max-w-[490px] w-full rounded-lg mx-auto hover:shadow-lg bg-white bg-cover bg-center justify-center items-center text-left text-[var(--white-color)] transition duration-200 ease-in-out">
+      <div className="max-w-[490px]  w-full rounded-lg mx-auto hover:shadow-lg bg-white bg-cover bg-center justify-center items-center text-left text-[var(--white-color)] transition duration-200 ease-in-out">
         {!subscribed ? (
           <>
             <div className="text-left pt-5 pl-5 pb-2 text-2xl font-medium text-[var(--font-color-1)]">
@@ -446,7 +446,7 @@ function Profile(props) {
     ? ""
     : style.full;
   return (
-    <div className="pt-20 bg-gray-100">
+    <div className="pt-20 min-h-screen bg-gray-100">
       <EditBanner canEdit={props.editable} />
       {!props.pageLoading && (
         <div className={style.profile_content}>
