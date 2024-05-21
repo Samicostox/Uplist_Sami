@@ -21,11 +21,33 @@ const Navbar = () => {
     console.log("tata2");
     //navigate("/auth/login");
   };
+
+  const getBiolinkNavigation = () => {
+    const newToken = TokenService.getUser();
+    if (!newToken) {
+      setToken(undefined);
+      return "/auth/login";
+    }
+
+    const username = newToken.username;
+
+    return "/biolink/" + username;
+  };
+
+  const handleBiolinkClick = (e) => {
+    e.preventDefault();
+    window.location.href = getBiolinkNavigation();
+  };
   const handleSignout = () => {
     // logout and redirect to auth
 
     AuthService.logout();
     window.location.href = "/auth/login";
+  };
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    window.location.href = "/auth/sign-up";
   };
 
   useEffect(() => {
@@ -45,15 +67,25 @@ const Navbar = () => {
     <nav className="bg-white dark:bg-gray-900 fixed w-full z-50 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <Logo />
-        <div className="flex md:order-2 space-x-3 md:space-x-4 rtl:space-x-reverse">
+        <div className="md:flex hidden md:order-2 space-x-3 md:space-x-4 rtl:space-x-reverse">
           {token && <button onClick={handleSignout}>Sign Out</button>}
           {!token && <RegisterButton />}
           {token ? <YourBiolinkButton /> : <SignInButton />}
         </div>
         <div className="hidden md:flex md:order-1 space-x-4">
-          <NavLink href={"/artists"}>Find Artists</NavLink>
-          {token && <NavLink href={"/bookings"}>Bookings</NavLink>}
-          {token && <NavLink href={"/account"}>Account</NavLink>}
+          <NavLink href="/artists" className={getLinkClasses("/artists")}>
+            Find Artists
+          </NavLink>
+          {token && (
+            <NavLink href="/bookings" className={getLinkClasses("/bookings")}>
+              Bookings
+            </NavLink>
+          )}
+          {token && (
+            <NavLink href="/account" className={getLinkClasses("/account")}>
+              Account
+            </NavLink>
+          )}
         </div>
         <div className="md:hidden flex items-center">
           <button
@@ -87,27 +119,66 @@ const Navbar = () => {
         className={`md:hidden ${openMenu ? "block" : "hidden"} w-full`}
         id="navbar-hamburger"
       >
-        <ul className="flex flex-col font-medium mt-4 mb-4 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
-          <li>
-            <a href="/" className={getLinkClasses("/")}>
-              Home
-            </a>
-          </li>
+        <ul className="flex flex-col font-medium mt-4 mb-4 rounded-lg  dark:bg-gray-800 dark:border-gray-700">
           <li>
             <a href="/artists" className={getLinkClasses("/artists")}>
               Find Artists
             </a>
           </li>
-          <li>
-            <a href="/bookings" className={getLinkClasses("/bookings")}>
-              Bookings
-            </a>
-          </li>
-          <li>
-            <a href="/account" className={getLinkClasses("/account")}>
-              Account
-            </a>
-          </li>
+          {token && (
+            <li>
+              <a href="/bookings" className={getLinkClasses("/bookings")}>
+                Bookings
+              </a>
+            </li>
+          )}
+          {token && (
+            <li>
+              <a href="/account" className={getLinkClasses("/account")}>
+                Account
+              </a>
+            </li>
+          )}
+          {token && (
+            <li>
+              <button
+                onClick={handleSignout}
+                className="block py-2 px-3 mx-3 text-gray-900 rounded hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+              >
+                Sign Out
+              </button>
+            </li>
+          )}
+          {!token && (
+            <li>
+              <a
+                onClick={handleClick}
+                className="block py-2 px-3 mx-3 text-gray-900 rounded hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+              >
+                Register
+              </a>
+            </li>
+          )}
+          {!token && (
+            <li>
+              <a
+                onClick={handleBiolinkClick}
+                className="block py-2 px-3 mx-3 text-gray-900 rounded hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+              >
+                Sign In
+              </a>
+            </li>
+          )}
+          {token && (
+            <li>
+              <a
+                onClick={handleBiolinkClick}
+                className={getLinkClasses(getBiolinkNavigation())}
+              >
+                Your Biolink
+              </a>
+            </li>
+          )}
         </ul>
       </div>
     </nav>
@@ -136,7 +207,7 @@ const Logo = () => {
   // Temp logo from https://logoipsum.com/
   return (
     <a href="/">
-      <img class="object-cover h-10 w-15" src={logo} alt="logo" />
+      <img class="object-cover h-12 w-15" src={logo} alt="logo" />
     </a>
   );
 };
@@ -165,8 +236,8 @@ const YourBiolinkButton = () => {
       onClick={handleBiolinkClick}
       className={`
             relative z-0 flex items-center gap-2 overflow-hidden whitespace-nowrap rounded-md border-[1px] 
-            border-neutral-700 px-4 py-1.5 font-medium
-           text-black transition-all duration-300
+            border-blue-500 px-4 py-1.5 font-medium
+           text-blue-500 transition-all duration-300
             
             before:absolute before:inset-0
             before:-z-10 before:translate-y-[200%]

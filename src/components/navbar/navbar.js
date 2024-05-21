@@ -111,7 +111,7 @@ const YourBiolinkButton = () => {
       className={`
           relative z-0 flex items-center gap-2 overflow-hidden whitespace-nowrap rounded-lg border-[1px] 
           border-neutral-700 px-4 py-1.5 font-medium
-         text-neutral-300 transition-all duration-300
+         text-blue-500 transition-all duration-300
           
           before:absolute before:inset-0
           before:-z-10 before:translate-y-[200%]
