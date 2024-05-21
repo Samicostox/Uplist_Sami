@@ -396,7 +396,7 @@ function Edit(props) {
               ) : (
                 <button
                   onClick={handleAddContentClicked}
-                  className="px-6 py-2 bg-black text-white rounded-lg font-medium transform hover:-translate-y-1 transition duration-400"
+                  className="px-6 py-2 bg-blue-500 text-white rounded-lg font-medium transform hover:-translate-y-1 transition duration-400"
                 >
                   Add Content
                 </button>

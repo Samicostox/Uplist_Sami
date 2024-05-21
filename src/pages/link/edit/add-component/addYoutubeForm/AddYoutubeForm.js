@@ -112,14 +112,14 @@ function AddYoutubeForm(props) {
 
           <div className="module_form_buttons flex justify-end mt-4">
             <button
-              className="module_form_button cancel bg-red-500 text-white py-2 px-4 rounded transition ease-in-out duration-200 hover:bg-red-700"
+              className="module_form_button cancel bg-black text-white py-2 px-4 rounded transition ease-in-out duration-200 hover:bg-gray-700"
               type="button"
               onClick={props.onClose}
             >
               Cancel
             </button>
             <button
-              className="bg-blue-500 text-white py-2 px-4 rounded ml-4 transition ease-in-out duration-200 hover:bg-blue-700"
+              className="bg-blue-500 text-white py-2 px-4 rounded ml-2 transition ease-in-out duration-200 hover:bg-blue-700"
               type="button"
               onClick={handleSave}
             >

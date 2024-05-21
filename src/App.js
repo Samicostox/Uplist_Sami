@@ -5,7 +5,7 @@ import Landing from "./pages/landing/landing";
 import Auth from "./pages/auth/auth";
 import ProfileController from "./pages/link/linkController";
 import SignUp from "./pages/auth/sign-up/signUp";
-import Navbar from "./components/navbar/navbar";
+import Navbar from "./components/navbar/navbar2";
 import ToasterBanner from "./components/toasterBanner/toasterBanner";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";

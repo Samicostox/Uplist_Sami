@@ -237,7 +237,7 @@ function AddBookingForm(props) {
 
             <div className="manage_stripe_button flex justify-end mt-4">
               <button
-                className="module_form_button bg-blue-500 text-white py-2 px-4 rounded transition ease-in-out duration-200 hover:bg-blue-700"
+                className="module_form_button bg-green-500 text-white py-2 px-4 rounded transition ease-in-out duration-200 hover:bg-green-700"
                 type="button"
                 onClick={handleManageStripeButton}
               >
@@ -247,7 +247,7 @@ function AddBookingForm(props) {
 
             <div className="module_form_buttons flex justify-end mt-4">
               <button
-                className="module_form_button bg-red-500 text-white py-2 px-4 rounded transition ease-in-out duration-200 hover:bg-red-700"
+                className="module_form_button bg-black text-white py-2 px-4 rounded transition ease-in-out duration-200 hover:bg-gray-700"
                 type="button"
                 onClick={handleBookingInfoCancel}
               >
