@@ -131,11 +131,11 @@ function Profile(props) {
           href={props.skiddleLinks[0].url}
           target="_blank"
           rel="noreferrer"
-          className="w-full mx-auto hover:shadow-xl max-w-[490px] bg-black no-underline rounded-md hover:shadow-lg  flex flex-col justify-center items-center text-center text-2xl text-[var(--white-color)] font-medium transition duration-200 ease-in-out hover:cursor-pointer"
+          className="w-full mx-auto hover:shadow-lg max-w-[490px] bg-black no-underline rounded-md hover:shadow-lg  flex flex-col justify-center items-center text-center text-2xl text-[var(--white-color)] font-medium transition duration-200 ease-in-out hover:cursor-pointer"
         >
-          <div class="relative  max-h-40 mx-auto">
+          <div class="relative  max-h-[150px] mx-auto">
             <img
-              class=" w-[490px] max-h-40 object-cover rounded-md"
+              class=" w-[490px] max-h-[150px] object-cover rounded-md"
               src="/pictures/link/event.jpeg"
               alt="Booking an event"
             ></img>
@@ -161,9 +161,9 @@ function Profile(props) {
     ) {
       return (
         <NavLink to={`/book/${props.state.username}`}>
-          <div class="relative max-w-[490px] hover:shadow-xl max-h-40 mx-auto">
+          <div class="relative max-w-[490px] hover:shadow-xl max-h-[150px] mx-auto">
             <img
-              class=" w-[490px] max-h-40 object-cover  rounded-md"
+              class=" w-[490px] max-h-[150px] object-cover  rounded-md"
               src="/pictures/link/booking.jpeg"
               alt="Booking an event"
             ></img>
@@ -185,7 +185,7 @@ function Profile(props) {
 
   const linksBlock = (links) => {
     // render in blocks of 4
-    const blockSize = 1;
+    const blockSize = 2;
 
     let numberOfBlocks = Math.ceil(links.length / blockSize);
 
@@ -202,11 +202,10 @@ function Profile(props) {
           key={link.id}
         >
           <div
-            className="h-16 w-full rounded-md mx-auto pl-8 bg-white text-[var(--font-color-1)] text-lg leading-[6.1rem] font-semibold whitespace-nowrap overflow-hidden text-ellipsis flex items-center transition duration-200 ease-in-out"
+            className="h-16 w-full bg-[var(--overlay-3)] hover:shadow-lg max-w-[490px] rounded-lg border-2 border-[var(--overlay-3)] rounded-md mx-auto pl-5 mb-5 bg-white text-[var(--font-color-1)] text-lg leading-[6.1rem] font-semibold whitespace-nowrap overflow-hidden text-ellipsis flex items-center transition duration-200 ease-in-out"
             data-testid="link-item"
           >
-            {renderLinkImage(link.url)}
-            <FaLink className="" /> {link.content}
+            <FaLink className="mr-4" /> {link.content}
           </div>
         </a>
       ));
@@ -215,7 +214,7 @@ function Profile(props) {
     }
 
     return blocks.map((block) => (
-      <div className="w-full bg-[var(--overlay-3)] hover:shadow-lg max-w-[490px] rounded-lg border-2 border-[var(--overlay-3)] block">
+      <div className="w-full -mb-5 block">
         <div className="">{block}</div>
       </div>
     ));
@@ -405,7 +404,7 @@ function Profile(props) {
       return <></>;
     }
     return (
-      <div className="max-w-[490px]  w-full rounded-lg mx-auto hover:shadow-lg bg-white bg-cover bg-center justify-center items-center text-left text-[var(--white-color)] transition duration-200 ease-in-out">
+      <div className="max-w-[490px] h-[150px] w-full rounded-md mx-auto hover:shadow-lg bg-white bg-cover bg-center flex-col flex justify-center items-left text-left text-[var(--white-color)] transition duration-200 ease-in-out">
         {!subscribed ? (
           <>
             <div className="text-left pt-5 pl-5 pb-2 text-2xl font-medium text-[var(--font-color-1)]">
@@ -463,7 +462,7 @@ function Profile(props) {
             </div>
           </div>
 
-          <div className="max-w-[1000px] px-2 pt-8 pb-4 mx-auto grid justify-items-center items-start  grid-cols-1 lg:grid-cols-[1fr_1fr] gap-5 box-content">
+          <div className="max-w-[1000px] px-2 pt-8 pb-4 mx-auto grid justify-items-center items-start grid-flow-row grid-cols-1 lg:grid-cols-[1fr_1fr] gap-5 box-content">
             {bookingsBlock()}
 
             {mailingListBlock()}

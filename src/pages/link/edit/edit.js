@@ -305,7 +305,7 @@ function Edit(props) {
               </div>
             </div>
           </form>
-          <Toggle />
+          <Toggle theme={props.theme} toggleTheme={props.toggleTheme} />
         </div>
       </div>
     );

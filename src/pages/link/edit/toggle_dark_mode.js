@@ -1,28 +1,26 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
 import { FiMoon, FiSun } from "react-icons/fi";
 
 const TOGGLE_CLASSES =
   "text-sm font-medium flex items-center gap-2 px-3 md:pl-3 md:pr-3.5 py-3 md:py-1.5 transition-colors relative z-10";
 
-const Toggle = () => {
-  const [selected, setSelected] = useState("light");
+const Toggle = ({ theme, toggleTheme }) => {
   return (
     <div>
-      <SliderToggle selected={selected} setSelected={setSelected} />
+      <SliderToggle theme={theme} toggleTheme={toggleTheme} />
     </div>
   );
 };
 
-const SliderToggle = ({ selected, setSelected }) => {
+const SliderToggle = ({ theme, toggleTheme }) => {
   return (
     <div className="relative flex w-fit items-center rounded-md">
       <button
         className={`${TOGGLE_CLASSES} ${
-          selected === "light" ? "text-white" : "text-slate-300"
+          theme === "light" ? "text-white" : "text-slate-300"
         }`}
         onClick={() => {
-          setSelected("light");
+          if (theme !== "light") toggleTheme({ target: { checked: false } });
         }}
       >
         <FiMoon className="relative z-10 text-lg md:text-sm" />
@@ -30,10 +28,10 @@ const SliderToggle = ({ selected, setSelected }) => {
       </button>
       <button
         className={`${TOGGLE_CLASSES} ${
-          selected === "dark" ? "text-white" : "text-slate-800"
+          theme === "dark" ? "text-white" : "text-slate-800"
         }`}
         onClick={() => {
-          setSelected("dark");
+          if (theme !== "dark") toggleTheme({ target: { checked: true } });
         }}
       >
         <FiSun className="relative z-10 text-lg md:text-sm" />
@@ -41,7 +39,7 @@ const SliderToggle = ({ selected, setSelected }) => {
       </button>
       <div
         className={`absolute inset-0 z-0 flex ${
-          selected === "dark" ? "justify-end" : "justify-start"
+          theme === "dark" ? "justify-end" : "justify-start"
         }`}
       >
         <motion.span
